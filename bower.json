@@ -1,0 +1,26 @@
+{
+  "name": "uncertainty-demo",
+  "authors": [
+    "zhaoyang1221 <164258541@qq.com>"
+  ],
+  "description": "uncertainty demo",
+  "main": "index.html",
+  "keywords": [
+    "uncertainty"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.12.1",
+    "jquery": "^3.2.1",
+    "d3": "3.5.17",
+    "d3-tip": "0.6.3"
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Uncertainty Interaction</title>
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/dimensionSatter.css">
+	<link rel="stylesheet" href="css/correlogram.css">
+</head>
+<body>
+<div id="control-bar" class="myDivClass">
+	<div >
+		<input type="file">
+	</div>
+</div>
+<div id="dimensionScatter" class="myDivClass">
+	<div id="dimensionScatter-controlPanel" class="controlPanel">
+		<label for="xAxisForDimensionScatter">X:</label>
+			<select name="xAxis" id="xAxisForDimensionScatter">
+				<option label="mean">mean</option>
+				<option value="sd">sd</option>
+				<option value="median">median</option>
+				<option value="min">min</option>
+				<option value="max">max</option>
+				<option value="uncertainty">uncertainty</option>
+			</select>
+		<label for="yAxisForDimensionScatter">Y: </label>
+		<select id="yAxisForDimensionScatter">
+			<option label="mean">mean</option>
+			<option value="sd">sd</option>
+			<option value="median">median</option>
+			<option value="min">min</option>
+			<option value="max">max</option>
+			<option value="uncertainty">uncertainty</option>
+		</select>
+		<input type="button" id="axisChangeButton" value="show">
+	</div>
+	<div id="dimensionScatter-container"></div>
+</div>
+<div id="rowDataScatter" class="myDivClass">
+	<div id="rowDataScatter-container"></div>
+</div>
+<div id="originalCorrelogram" class="myDivClass">
+	<div class="controlPanel">
+		<button >reorder</button>
+	</div>
+	<div id="originalCorrelogram-container"></div>
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/d3/d3.min.js"></script>
+<script src="bower_components/d3-tip/index.js"></script>
+
+<script src="js/main.js"></script>
+<!--<script src="js/dimensionScatter.js"></script>-->
+<!--<script src="js/rowDataScatter.js"></script>-->
+</body>
+</html>

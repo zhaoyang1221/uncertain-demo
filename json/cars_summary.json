@@ -1,0 +1,65 @@
+[
+  {
+    "mean": 23.4459,
+    "sd": 7.805,
+    "min": 9,
+    "max": 46.6,
+    "median": 22.75,
+    "uncertainty": 6.2027,
+    "_row": "economy"
+  },
+  {
+    "mean": 5.4719,
+    "sd": 1.7058,
+    "min": 3,
+    "max": 8,
+    "median": 4,
+    "uncertainty": 1.5987,
+    "_row": "cylinders"
+  },
+  {
+    "mean": 194.412,
+    "sd": 104.644,
+    "min": 68,
+    "max": 455,
+    "median": 151,
+    "uncertainty": 5.7341,
+    "_row": "displacement"
+  },
+  {
+    "mean": 104.4694,
+    "sd": 38.4912,
+    "min": 46,
+    "max": 230,
+    "median": 93.5,
+    "uncertainty": 5.8579,
+    "_row": "power"
+  },
+  {
+    "mean": 2977.5842,
+    "sd": 849.4026,
+    "min": 1613,
+    "max": 5140,
+    "median": 2803.5,
+    "uncertainty": 8.3583,
+    "_row": "weight"
+  },
+  {
+    "mean": 15.5413,
+    "sd": 2.7589,
+    "min": 8,
+    "max": 24.8,
+    "median": 15.5,
+    "uncertainty": 5.9354,
+    "_row": "timeTo60mph"
+  },
+  {
+    "mean": 75.9796,
+    "sd": 3.6837,
+    "min": 70,
+    "max": 82,
+    "median": 76,
+    "uncertainty": 3.6888,
+    "_row": "year"
+  }
+]

@@ -1,0 +1,296 @@
+[
+  {
+    "row": "economy",
+    "column": "economy",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "cylinders",
+    "column": "economy",
+    "r": 0.4761,
+    "p": 0.0251
+  },
+  {
+    "row": "displacement",
+    "column": "economy",
+    "r": 0.903,
+    "p": 8.9081e-009
+  },
+  {
+    "row": "power",
+    "column": "economy",
+    "r": 0.8238,
+    "p": 2.4595e-006
+  },
+  {
+    "row": "weight",
+    "column": "economy",
+    "r": 0.8081,
+    "p": 5.396e-006
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "economy",
+    "r": 0.9465,
+    "p": 2.7719e-011
+  },
+  {
+    "row": "year",
+    "column": "economy",
+    "r": 0.7466,
+    "p": 0.0001
+  },
+  {
+    "row": "economy",
+    "column": "cylinders",
+    "r": 0.4761,
+    "p": 0.0251
+  },
+  {
+    "row": "cylinders",
+    "column": "cylinders",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "displacement",
+    "column": "cylinders",
+    "r": 0.5705,
+    "p": 0.0056
+  },
+  {
+    "row": "power",
+    "column": "cylinders",
+    "r": 0.4774,
+    "p": 0.0247
+  },
+  {
+    "row": "weight",
+    "column": "cylinders",
+    "r": 0.5483,
+    "p": 0.0082
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "cylinders",
+    "r": 0.3908,
+    "p": 0.0721
+  },
+  {
+    "row": "year",
+    "column": "cylinders",
+    "r": 0.5657,
+    "p": 0.0061
+  },
+  {
+    "row": "economy",
+    "column": "displacement",
+    "r": 0.903,
+    "p": 8.9081e-009
+  },
+  {
+    "row": "cylinders",
+    "column": "displacement",
+    "r": 0.5705,
+    "p": 0.0056
+  },
+  {
+    "row": "displacement",
+    "column": "displacement",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "power",
+    "column": "displacement",
+    "r": 0.9084,
+    "p": 5.1454e-009
+  },
+  {
+    "row": "weight",
+    "column": "displacement",
+    "r": 0.8611,
+    "p": 2.6853e-007
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "displacement",
+    "r": 0.8819,
+    "p": 5.8008e-008
+  },
+  {
+    "row": "year",
+    "column": "displacement",
+    "r": 0.7861,
+    "p": 0
+  },
+  {
+    "row": "economy",
+    "column": "power",
+    "r": 0.8238,
+    "p": 2.4595e-006
+  },
+  {
+    "row": "cylinders",
+    "column": "power",
+    "r": 0.4774,
+    "p": 0.0247
+  },
+  {
+    "row": "displacement",
+    "column": "power",
+    "r": 0.9084,
+    "p": 5.1454e-009
+  },
+  {
+    "row": "power",
+    "column": "power",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "weight",
+    "column": "power",
+    "r": 0.8844,
+    "p": 4.7295e-008
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "power",
+    "r": 0.8432,
+    "p": 8.342e-007
+  },
+  {
+    "row": "year",
+    "column": "power",
+    "r": 0.7083,
+    "p": 0.0002
+  },
+  {
+    "row": "economy",
+    "column": "weight",
+    "r": 0.8081,
+    "p": 5.396e-006
+  },
+  {
+    "row": "cylinders",
+    "column": "weight",
+    "r": 0.5483,
+    "p": 0.0082
+  },
+  {
+    "row": "displacement",
+    "column": "weight",
+    "r": 0.8611,
+    "p": 2.6853e-007
+  },
+  {
+    "row": "power",
+    "column": "weight",
+    "r": 0.8844,
+    "p": 4.7295e-008
+  },
+  {
+    "row": "weight",
+    "column": "weight",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "weight",
+    "r": 0.8679,
+    "p": 1.6748e-007
+  },
+  {
+    "row": "year",
+    "column": "weight",
+    "r": 0.7081,
+    "p": 0.0002
+  },
+  {
+    "row": "economy",
+    "column": "timeTo60mph",
+    "r": 0.9465,
+    "p": 2.7719e-011
+  },
+  {
+    "row": "cylinders",
+    "column": "timeTo60mph",
+    "r": 0.3908,
+    "p": 0.0721
+  },
+  {
+    "row": "displacement",
+    "column": "timeTo60mph",
+    "r": 0.8819,
+    "p": 5.8008e-008
+  },
+  {
+    "row": "power",
+    "column": "timeTo60mph",
+    "r": 0.8432,
+    "p": 8.342e-007
+  },
+  {
+    "row": "weight",
+    "column": "timeTo60mph",
+    "r": 0.8679,
+    "p": 1.6748e-007
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "timeTo60mph",
+    "r": 1,
+    "p": null
+  },
+  {
+    "row": "year",
+    "column": "timeTo60mph",
+    "r": 0.767,
+    "p": 0
+  },
+  {
+    "row": "economy",
+    "column": "year",
+    "r": 0.7466,
+    "p": 0.0001
+  },
+  {
+    "row": "cylinders",
+    "column": "year",
+    "r": 0.5657,
+    "p": 0.0061
+  },
+  {
+    "row": "displacement",
+    "column": "year",
+    "r": 0.7861,
+    "p": 0
+  },
+  {
+    "row": "power",
+    "column": "year",
+    "r": 0.7083,
+    "p": 0.0002
+  },
+  {
+    "row": "weight",
+    "column": "year",
+    "r": 0.7081,
+    "p": 0.0002
+  },
+  {
+    "row": "timeTo60mph",
+    "column": "year",
+    "r": 0.767,
+    "p": 0
+  },
+  {
+    "row": "year",
+    "column": "year",
+    "r": 1,
+    "p": null
+  }
+]
