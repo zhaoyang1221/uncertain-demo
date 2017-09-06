@@ -28,6 +28,17 @@ html, body {
     float: left;
 }
 
+#parallelCoordinates {
+    width: 1310px;
+    height: 550px;
+    float: left;
+}
+#uncertaintyCorrelogram{
+    width: 650px;
+    height: 550px;
+    float: left;
+}
+
 .controlPanel{
     padding-left: 10px;
     padding-top: 5px;

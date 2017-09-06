@@ -16,6 +16,10 @@ drawRowDataScatter();
 
 drawOriginalCorrelogram();
 
+drawUncertaintyCorrelogram();
+
+drawParallelCoordinates();
+
 /**
  * 画维度散点图
  */
@@ -48,7 +52,7 @@ function drawDimensionScatter() {
 		if (error) {
 			throw error;
 		}
-		console.log(data);
+		// console.log(data);
 
 		var xMax = d3.max(data, function(d) { return d[xCat]; }) * 1.05,
 			xMin = d3.min(data, function(d) { return d[xCat]; }),
@@ -84,6 +88,7 @@ function drawDimensionScatter() {
 			.on("zoom", zoom);
 
 		var svg = container.append('svg')
+			.attr("id", "dimensionScatterSvg")
 			.attr('width', width)
 			.attr('height', height)
 			.append('g')
@@ -159,9 +164,14 @@ function drawDimensionScatter() {
 		d3.select("#axisChangeButton").on("click", change);
 
 		function change() {
-			xCat = "median";
+            xCat = $("#xAxisForDimensionScatter").val();
+            yCat = $("#yAxisForDimensionScatter").val();
+
 			xMax = d3.max(data, function(d) { return d[xCat]; });
 			xMin = d3.min(data, function(d) { return d[xCat]; });
+
+			yMax = d3.max(data, function (d) { return d[yCat];});
+			yMin = d3.min(data, function (d) { return d[yCat];});
 
 			zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
 
@@ -323,7 +333,7 @@ function drawRowDataScatter() {
 		/**
 		 * 设置button动作
 		 */
-		d3.select("#axisChangeButton").on("click", change);
+		// d3.select("#axisChangeButton").on("click", change);
 
 		function change() {
 			xCat = "median";
@@ -384,7 +394,7 @@ function drawOriginalCorrelogram() {
 		if (error) {
 			throw error;
 		}
-		console.log(data);
+		// console.log(data);
 		var domain = d3.set(data.map(function(d) {
 				return d.row
 			})).values();
@@ -394,6 +404,161 @@ function drawOriginalCorrelogram() {
 		var	color = d3.scale.linear()
 				.domain([-1, 0, 1])
 				.range(["#B22222", "#fff", "#000080"]);
+
+		var x = d3.scale
+				.ordinal()
+				.rangePoints([0, plotAreaWidth])
+				.domain(domain),
+			y = d3.scale
+				.ordinal()
+				.rangePoints([0, plotAreaHeight])
+				.domain(domain),
+
+
+			xSpace = x.range()[1] - x.range()[0],
+			ySpace = y.range()[1] - y.range()[0];
+
+		var cor = svg.selectAll(".cor")
+			.data(data)
+			.enter()
+			.append("g")
+			.attr("class", "cor")
+			.attr("transform", function(d) {
+				return "translate(" + x(d.row) + "," + y(d.column) + ")";
+			});
+		//
+		cor.append("rect")
+			.attr("width", xSpace)
+			.attr("height", ySpace)
+			.attr("class", "correlationRect")
+			.attr("x", -xSpace / 2)
+			.attr("y", -ySpace / 2);
+
+		cor.filter(function(d){
+			var ypos = domain.indexOf(d.column);
+			var xpos = domain.indexOf(d.row);
+			for (var i = (ypos + 1); i < num; i++){
+				if (i === xpos || d.p > sigLevel) return false;
+			}
+			return true;
+		})
+			.append("text")
+			// .attr("x", -5)
+			.attr("y", 5)
+			.text(function(d) {
+				if (d.p > sigLevel) {
+					return "";
+				} else if (d.row === d.column) {
+					return d.row;
+				} else {
+					return d.r.toFixed(2);
+				}
+			})
+			.style("fill", function(d){
+				if (d.r === 1) {
+					return "#000";
+				} else {
+					return color(d.r);
+				}
+			});
+
+		cor.filter(function(d){
+			var ypos = domain.indexOf(d.column);
+			var xpos = domain.indexOf(d.row);
+			for (var i = (ypos + 1); i < num; i++){
+				if (i === xpos || d.p > sigLevel) return true;
+			}
+			return false;
+		})
+			.append("circle")
+			.attr("r", function(d){
+				if (d.p > sigLevel) {
+					return "";
+				} else {
+					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
+				}
+			})
+			.style("fill", function(d){
+				if (d.r === 1) {
+					return "#000";
+				} else {
+					return color(d.r);
+				}
+			});
+
+		//legend
+		var aS = d3.scale
+			.linear()
+			.range([-padding.top + 15, plotAreaHeight + padding.bottom - 10])
+			.domain([1, -1]);
+
+		var yA = d3.svg.axis()
+			.orient("right")
+			.scale(aS)
+			.tickPadding(7);
+
+		var aG = svg.append("g")
+			.attr("class", "y axis")
+			.call(yA)
+			.attr("transform", "translate(" + (plotAreaWidth + padding.right / 2) + " ,0)");
+
+		var iR = d3.range(-1, 1.01, 0.01);
+		var h = plotAreaHeight / iR.length + 3;
+		iR.forEach(function(d){
+			aG.append('rect')
+				.style('fill',color(d))
+				.style('stroke-width', 0)
+				.style('stoke', 'none')
+				.attr('height', h)
+				.attr('width', 10)
+				.attr('x', 0)
+				.attr('y', aS(d))
+		});
+	});
+}
+
+/**
+ * 不确定性数据相关图
+ */
+function drawUncertaintyCorrelogram() {
+	const uncertaintyCorrelogramContainer = d3.select("#uncertaintyCorrelogram-container");
+	const width = 600;
+	const height = 500;
+	const padding = {
+		top: 50,
+		right: 100,
+		bottom: 40,
+		left: 50
+	};
+	const sigLevel = 0.05;
+
+	// inner chart dimensions, where the dots are plotted
+	const plotAreaWidth = width - padding.left - padding.right;
+	const plotAreaHeight = height - padding.top - padding.bottom;
+
+	var svg = uncertaintyCorrelogramContainer.append('svg')
+		.attr("class", "correlogram")
+		.attr('width', width)
+		.attr('height', height)
+		.append('g')
+		.attr('transform', 'translate(' + padding.left +',' + padding.top + ')');
+
+
+
+	d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
+		if (error) {
+			throw error;
+		}
+		// console.log(data);
+		var domain = d3.set(data.map(function(d) {
+			return d.row
+		})).values();
+
+		var num = Math.sqrt(data.length);
+
+		var	color = d3.scale.linear()
+			.domain([-1, 0, 1])
+			.range(["#B22222", "#fff", "#000080"]);
 
 		var x = d3.scale
 				.ordinal()
@@ -462,7 +627,11 @@ function drawOriginalCorrelogram() {
 		})
 			.append("circle")
 			.attr("r", function(d){
-				return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
+				if (d.p > sigLevel) {
+					return "";
+				} else {
+					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
+				}
 			})
 			.style("fill", function(d){
 				if (d.r === 1) {
@@ -501,4 +670,273 @@ function drawOriginalCorrelogram() {
 				.attr('y', aS(d))
 		});
 	});
+}
+
+function drawParallelCoordinates() {
+	const parallelCoordinates = d3.select("#parallelCoordinates-container");
+	const width = 1310,
+	    height = 550;
+
+	const padding = {top: 30, right: 10, bottom: 10, left: 10};
+	const plotAreaWidth = width - padding.left - padding.right;
+	const plotAreaHeight = height - padding.top - padding.bottom;
+
+	var x = d3.scale.ordinal().rangePoints([0, width], 1),
+		y = {},
+		dragging = {};
+
+	var line = d3.svg.line(),
+		axis = d3.svg.axis().orient("left"),
+		background,
+		foreground;
+
+	var svgForOriginal = parallelCoordinates.append("svg")
+		.attr("id", "svgForOriginal")
+		// .attr("visibility", "hidden")
+		.attr("width", width)
+		.attr("height", height)
+		.append("g")
+		.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+
+	var svgForUncertainty = parallelCoordinates.append("svg")
+		.attr("id", "svgForUncertainty")
+		.attr("width", width)
+		.attr("height", height)
+		.append("g")
+		.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+
+	d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
+		if (error) {
+			throw error;
+		}
+		console.log(data);
+		drawOriginal();
+		drawUncertainty();
+
+		function drawOriginal() {
+			y = {};
+			dragging = {};
+			background = null;
+			foreground = null;
+
+			x.domain(dimensions = d3.keys(data.original[0]));
+			dimensions.forEach(function (d) {
+				var domain = d3.extent(data.original, function (p) {
+					return p[d];
+				});
+				// console.log(domain);
+				y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
+				return y[d];
+			});
+			// Add grey background lines for context.
+			background = svgForOriginal.append("g")
+				.attr("class", "background")
+				.selectAll("path")
+				.data(data.original)
+				.enter()
+				.append("path")
+				.attr("d", path);
+
+			// Add blue foreground lines for focus.
+			foreground = svgForOriginal.append("g")
+				.attr("class", "foreground")
+				.selectAll("path")
+				.data(data.original)
+				.enter().append("path")
+				.attr("d", path);
+
+			// Add a group element for each dimension.
+			var g = svgForOriginal.selectAll(".dimension")
+				.data(dimensions)
+				.enter().append("g")
+				.attr("class", "dimension")
+				.attr("transform", function (d) {
+					return "translate(" + x(d) + ")";
+				})
+				.call(d3.behavior.drag()
+					.origin(function (d) {
+						return {x: x(d)};
+					})
+					.on("dragstart", function (d) {
+						dragging[d] = x(d);
+						background.attr("visibility", "hidden");
+					})
+					.on("drag", function (d) {
+						dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
+						foreground.attr("d", path);
+						dimensions.sort(function (a, b) {
+							return position(a) - position(b);
+						});
+						x.domain(dimensions);
+						g.attr("transform", function (d) {
+							return "translate(" + position(d) + ")";
+						})
+					})
+					.on("dragend", function (d) {
+						delete dragging[d];
+						transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+						transition(foreground).attr("d", path);
+						background
+							.attr("d", path)
+							.transition()
+							.delay(500)
+							.duration(0)
+							.attr("visibility", null);
+					}));
+
+			// Add an axis and title.
+			g.append("g")
+				.attr("class", "parallelAxis")
+				.each(function (d) {
+					d3.select(this).call(axis.scale(y[d]));
+				})
+				.append("text")
+				.style("text-anchor", "middle")
+				.attr("y", -9)
+				.text(function (d) {
+					return d;
+				});
+
+			// Add and store a brush for each axis.
+			g.append("g")
+				.attr("class", "brush")
+				.each(function (d) {
+					d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+				})
+				.selectAll("rect")
+				.attr("x", -8)
+				.attr("width", 16);
+		}
+
+		function drawUncertainty() {
+			y = {};
+			dragging = {};
+			background = null;
+			foreground = null;
+
+			x.domain(dimensions = d3.keys(data.uncertainty[0]));
+			dimensions.forEach(function (d) {
+				var domain = d3.extent(data.uncertainty, function (p) {
+					return p[d];
+				});
+				// console.log(domain);
+				y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
+				return y[d];
+			});
+			// Add grey background lines for context.
+			background = svgForUncertainty.append("g")
+				.attr("class", "background")
+				.selectAll("path")
+				.data(data.uncertainty)
+				.enter()
+				.append("path")
+				.attr("d", path);
+
+			// Add blue foreground lines for focus.
+			foreground = svgForUncertainty.append("g")
+				.attr("class", "foreground")
+				.selectAll("path")
+				.data(data.uncertainty)
+				.enter().append("path")
+				.attr("d", path);
+
+			// Add a group element for each dimension.
+			var g = svgForUncertainty.selectAll(".dimension")
+				.data(dimensions)
+				.enter().append("g")
+				.attr("class", "dimension")
+				.attr("transform", function (d) {
+					return "translate(" + x(d) + ")";
+				})
+				.call(d3.behavior.drag()
+					.origin(function (d) {
+						return {x: x(d)};
+					})
+					.on("dragstart", function (d) {
+						dragging[d] = x(d);
+						background.attr("visibility", "hidden");
+					})
+					.on("drag", function (d) {
+						dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
+						foreground.attr("d", path);
+						dimensions.sort(function (a, b) {
+							return position(a) - position(b);
+						});
+						x.domain(dimensions);
+						g.attr("transform", function (d) {
+							return "translate(" + position(d) + ")";
+						})
+					})
+					.on("dragend", function (d) {
+						delete dragging[d];
+						transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+						transition(foreground).attr("d", path);
+						background
+							.attr("d", path)
+							.transition()
+							.delay(500)
+							.duration(0)
+							.attr("visibility", null);
+					}));
+
+			// Add an axis and title.
+			g.append("g")
+				.attr("class", "parallelAxis")
+				.each(function (d) {
+					d3.select(this).call(axis.scale(y[d]));
+				})
+				.append("text")
+				.style("text-anchor", "middle")
+				.attr("y", -9)
+				.text(function (d) {
+					return d;
+				});
+
+			// Add and store a brush for each axis.
+			g.append("g")
+				.attr("class", "brush")
+				.each(function (d) {
+					d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+				})
+				.selectAll("rect")
+				.attr("x", -8)
+				.attr("width", 16);
+		}
+	});
+
+
+		function position(d) {
+			var v = dragging[d];
+			return v == null ? x(d) : v;
+		}
+
+		function transition(g) {
+			return g.transition().duration(500);
+		}
+
+// Returns the path for a given data point.
+		function path(d) {
+			return line(dimensions.map(function (p) {
+				return [position(p), y[p](d[p])];
+			}));
+		}
+
+		function brushstart() {
+			d3.event.sourceEvent.stopPropagation();
+		}
+
+// Handles a brush event, toggling the display of foreground lines.
+		function brush() {
+			var actives = dimensions.filter(function (p) {
+					return !y[p].brush.empty();
+				}),
+				extents = actives.map(function (p) {
+					return y[p].brush.extent();
+				});
+			foreground.style("display", function (d) {
+				return actives.every(function (p, i) {
+					return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+				}) ? null : "none";
+			});
+		}
 }

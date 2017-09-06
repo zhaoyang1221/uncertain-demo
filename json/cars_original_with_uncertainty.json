@@ -1,0 +1,3732 @@
+{
+  "original": [
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 360,
+      "power": 175,
+      "weight": 3821,
+      "timeTo60mph": 11,
+      "year": 73
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 390,
+      "power": 190,
+      "weight": 3850,
+      "timeTo60mph": 8.5,
+      "year": 70
+    },
+    {
+      "economy": 17,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 150,
+      "weight": 3672,
+      "timeTo60mph": 11.5,
+      "year": 72
+    },
+    {
+      "economy": 20.2,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 90,
+      "weight": 3265,
+      "timeTo60mph": 18.2,
+      "year": 79
+    },
+    {
+      "economy": 18.1,
+      "cylinders": 6,
+      "displacement": 258,
+      "power": 120,
+      "weight": 3410,
+      "timeTo60mph": 15.1,
+      "year": 78
+    },
+    {
+      "economy": 19.4,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 90,
+      "weight": 3210,
+      "timeTo60mph": 17.2,
+      "year": 78
+    },
+    {
+      "economy": 24.3,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 3003,
+      "timeTo60mph": 20.1,
+      "year": 80
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 2789,
+      "timeTo60mph": 15,
+      "year": 73
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 2634,
+      "timeTo60mph": 13,
+      "year": 71
+    },
+    {
+      "economy": 20,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 2914,
+      "timeTo60mph": 16,
+      "year": 75
+    },
+    {
+      "economy": 21,
+      "cylinders": 6,
+      "displacement": 199,
+      "power": 90,
+      "weight": 2648,
+      "timeTo60mph": 15,
+      "year": 70
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 258,
+      "power": 110,
+      "weight": 2962,
+      "timeTo60mph": 13.5,
+      "year": 71
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 199,
+      "power": 97,
+      "weight": 2774,
+      "timeTo60mph": 15.5,
+      "year": 70
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 2945,
+      "timeTo60mph": 16,
+      "year": 73
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 2901,
+      "timeTo60mph": 16,
+      "year": 74
+    },
+    {
+      "economy": 22.5,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 90,
+      "weight": 3085,
+      "timeTo60mph": 17.6,
+      "year": 76
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 150,
+      "weight": 4257,
+      "timeTo60mph": 15.5,
+      "year": 74
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 150,
+      "weight": 3892,
+      "timeTo60mph": 12.5,
+      "year": 72
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 150,
+      "weight": 3672,
+      "timeTo60mph": 11.5,
+      "year": 73
+    },
+    {
+      "economy": 15,
+      "cylinders": 6,
+      "displacement": 258,
+      "power": 110,
+      "weight": 3730,
+      "timeTo60mph": 19,
+      "year": 75
+    },
+    {
+      "economy": 15.5,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 120,
+      "weight": 3962,
+      "timeTo60mph": 13.9,
+      "year": 76
+    },
+    {
+      "economy": 16,
+      "cylinders": 6,
+      "displacement": 258,
+      "power": 110,
+      "weight": 3632,
+      "timeTo60mph": 18,
+      "year": 74
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 100,
+      "weight": 3288,
+      "timeTo60mph": 15.5,
+      "year": 71
+    },
+    {
+      "economy": 17.5,
+      "cylinders": 6,
+      "displacement": 258,
+      "power": 95,
+      "weight": 3193,
+      "timeTo60mph": 17.8,
+      "year": 76
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 90,
+      "weight": 3211,
+      "timeTo60mph": 17,
+      "year": 75
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 150,
+      "weight": 3433,
+      "timeTo60mph": 12,
+      "year": 70
+    },
+    {
+      "economy": 27.4,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 80,
+      "weight": 2670,
+      "timeTo60mph": 15,
+      "year": 79
+    },
+    {
+      "economy": 20,
+      "cylinders": 4,
+      "displacement": 114,
+      "power": 91,
+      "weight": 2582,
+      "timeTo60mph": 14,
+      "year": 73
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 115,
+      "power": 95,
+      "weight": 2694,
+      "timeTo60mph": 15,
+      "year": 75
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 107,
+      "power": 90,
+      "weight": 2430,
+      "timeTo60mph": 14.5,
+      "year": 70
+    },
+    {
+      "economy": 34.3,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 78,
+      "weight": 2188,
+      "timeTo60mph": 15.8,
+      "year": 80
+    },
+    {
+      "economy": 20.3,
+      "cylinders": 5,
+      "displacement": 131,
+      "power": 103,
+      "weight": 2830,
+      "timeTo60mph": 15.9,
+      "year": 78
+    },
+    {
+      "economy": 36.4,
+      "cylinders": 5,
+      "displacement": 121,
+      "power": 67,
+      "weight": 2950,
+      "timeTo60mph": 19.9,
+      "year": 80
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 83,
+      "weight": 2219,
+      "timeTo60mph": 16.5,
+      "year": 74
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 113,
+      "weight": 2234,
+      "timeTo60mph": 12.5,
+      "year": 70
+    },
+    {
+      "economy": 21.5,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 110,
+      "weight": 2600,
+      "timeTo60mph": 12.8,
+      "year": 77
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 175,
+      "weight": 4100,
+      "timeTo60mph": 13,
+      "year": 73
+    },
+    {
+      "economy": 25,
+      "cylinders": 6,
+      "displacement": 181,
+      "power": 110,
+      "weight": 2945,
+      "timeTo60mph": 16.4,
+      "year": 82
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 150,
+      "weight": 4699,
+      "timeTo60mph": 14.5,
+      "year": 74
+    },
+    {
+      "economy": 20.6,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 105,
+      "weight": 3380,
+      "timeTo60mph": 15.8,
+      "year": 78
+    },
+    {
+      "economy": 17,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 110,
+      "weight": 3907,
+      "timeTo60mph": 21,
+      "year": 75
+    },
+    {
+      "economy": 22.4,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 110,
+      "weight": 3415,
+      "timeTo60mph": 15.8,
+      "year": 81
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 455,
+      "power": 225,
+      "weight": 4951,
+      "timeTo60mph": 11,
+      "year": 73
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 455,
+      "power": 225,
+      "weight": 3086,
+      "timeTo60mph": 10,
+      "year": 70
+    },
+    {
+      "economy": 16.9,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 155,
+      "weight": 4360,
+      "timeTo60mph": 14.9,
+      "year": 79
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 155,
+      "weight": 4502,
+      "timeTo60mph": 13.5,
+      "year": 72
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 111,
+      "power": 80,
+      "weight": 2155,
+      "timeTo60mph": 14.8,
+      "year": 77
+    },
+    {
+      "economy": 17.7,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 165,
+      "weight": 3445,
+      "timeTo60mph": 13.4,
+      "year": 78
+    },
+    {
+      "economy": 21,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 110,
+      "weight": 3039,
+      "timeTo60mph": 15,
+      "year": 75
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 165,
+      "weight": 3693,
+      "timeTo60mph": 11.5,
+      "year": 70
+    },
+    {
+      "economy": 28.4,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 2670,
+      "timeTo60mph": 16,
+      "year": 79
+    },
+    {
+      "economy": 20.5,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 105,
+      "weight": 3425,
+      "timeTo60mph": 16.9,
+      "year": 77
+    },
+    {
+      "economy": 26.6,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 84,
+      "weight": 2635,
+      "timeTo60mph": 16.4,
+      "year": 81
+    },
+    {
+      "economy": 23,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 125,
+      "weight": 3900,
+      "timeTo60mph": 17.4,
+      "year": 79
+    },
+    {
+      "economy": 16.5,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 180,
+      "weight": 4380,
+      "timeTo60mph": 12.1,
+      "year": 76
+    },
+    {
+      "economy": 16,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 105,
+      "weight": 3897,
+      "timeTo60mph": 18.5,
+      "year": 75
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 145,
+      "weight": 4440,
+      "timeTo60mph": 14,
+      "year": 75
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 2950,
+      "timeTo60mph": 17.3,
+      "year": 82
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 150,
+      "weight": 4464,
+      "timeTo60mph": 12,
+      "year": 73
+    },
+    {
+      "economy": 17,
+      "cylinders": 8,
+      "displacement": 305,
+      "power": 130,
+      "weight": 3840,
+      "timeTo60mph": 15.4,
+      "year": 79
+    },
+    {
+      "economy": 17.5,
+      "cylinders": 8,
+      "displacement": 305,
+      "power": 145,
+      "weight": 3880,
+      "timeTo60mph": 12.5,
+      "year": 77
+    },
+    {
+      "economy": 34,
+      "cylinders": 4,
+      "displacement": 112,
+      "power": 88,
+      "weight": 2395,
+      "timeTo60mph": 18,
+      "year": 82
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 112,
+      "power": 88,
+      "weight": 2640,
+      "timeTo60mph": 18.6,
+      "year": 82
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 112,
+      "power": 88,
+      "weight": 2605,
+      "timeTo60mph": 19.6,
+      "year": 82
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 307,
+      "power": 130,
+      "weight": 4098,
+      "timeTo60mph": 14,
+      "year": 72
+    },
+    {
+      "economy": 16,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 100,
+      "weight": 3781,
+      "timeTo60mph": 17,
+      "year": 74
+    },
+    {
+      "economy": 17.5,
+      "cylinders": 8,
+      "displacement": 305,
+      "power": 140,
+      "weight": 4215,
+      "timeTo60mph": 13,
+      "year": 76
+    },
+    {
+      "economy": 17,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 100,
+      "weight": 3329,
+      "timeTo60mph": 15.5,
+      "year": 71
+    },
+    {
+      "economy": 18,
+      "cylinders": 8,
+      "displacement": 307,
+      "power": 130,
+      "weight": 3504,
+      "timeTo60mph": 12,
+      "year": 70
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 52,
+      "weight": 2035,
+      "timeTo60mph": 22.2,
+      "year": 76
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 68,
+      "weight": 2155,
+      "timeTo60mph": 16.5,
+      "year": 78
+    },
+    {
+      "economy": 30.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 63,
+      "weight": 2051,
+      "timeTo60mph": 17,
+      "year": 77
+    },
+    {
+      "economy": 32.1,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 70,
+      "weight": 2120,
+      "timeTo60mph": 15.5,
+      "year": 80
+    },
+    {
+      "economy": 23.5,
+      "cylinders": 6,
+      "displacement": 173,
+      "power": 110,
+      "weight": 2725,
+      "timeTo60mph": 12.6,
+      "year": 81
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 2678,
+      "timeTo60mph": 16.5,
+      "year": 80
+    },
+    {
+      "economy": 28.8,
+      "cylinders": 6,
+      "displacement": 173,
+      "power": 115,
+      "weight": 2595,
+      "timeTo60mph": 11.3,
+      "year": 79
+    },
+    {
+      "economy": 17.5,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 110,
+      "weight": 3520,
+      "timeTo60mph": 16.4,
+      "year": 77
+    },
+    {
+      "economy": 11,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 150,
+      "weight": 4997,
+      "timeTo60mph": 14,
+      "year": 73
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 165,
+      "weight": 4274,
+      "timeTo60mph": 12,
+      "year": 72
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 165,
+      "weight": 4209,
+      "timeTo60mph": 12,
+      "year": 71
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 454,
+      "power": 220,
+      "weight": 4354,
+      "timeTo60mph": 9,
+      "year": 70
+    },
+    {
+      "economy": 19.2,
+      "cylinders": 8,
+      "displacement": 267,
+      "power": 125,
+      "weight": 3605,
+      "timeTo60mph": 15,
+      "year": 79
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 145,
+      "weight": 3988,
+      "timeTo60mph": 13,
+      "year": 73
+    },
+    {
+      "economy": 20.5,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 95,
+      "weight": 3155,
+      "timeTo60mph": 18.2,
+      "year": 78
+    },
+    {
+      "economy": 15.5,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 170,
+      "weight": 4165,
+      "timeTo60mph": 11.4,
+      "year": 77
+    },
+    {
+      "economy": 19.2,
+      "cylinders": 8,
+      "displacement": 305,
+      "power": 145,
+      "weight": 3425,
+      "timeTo60mph": 13.2,
+      "year": 78
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 145,
+      "weight": 4082,
+      "timeTo60mph": 13,
+      "year": 73
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 150,
+      "weight": 3761,
+      "timeTo60mph": 9.5,
+      "year": 70
+    },
+    {
+      "economy": 20,
+      "cylinders": 8,
+      "displacement": 262,
+      "power": 110,
+      "weight": 3221,
+      "timeTo60mph": 13.5,
+      "year": 75
+    },
+    {
+      "economy": 16,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 100,
+      "weight": 3278,
+      "timeTo60mph": 18,
+      "year": 73
+    },
+    {
+      "economy": 15,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 100,
+      "weight": 3336,
+      "timeTo60mph": 17,
+      "year": 74
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 105,
+      "weight": 3459,
+      "timeTo60mph": 16,
+      "year": 75
+    },
+    {
+      "economy": 22,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 105,
+      "weight": 3353,
+      "timeTo60mph": 14.5,
+      "year": 76
+    },
+    {
+      "economy": 22,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 72,
+      "weight": 2408,
+      "timeTo60mph": 19,
+      "year": 71
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 90,
+      "weight": 2264,
+      "timeTo60mph": 15.5,
+      "year": 71
+    },
+    {
+      "economy": 20,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 90,
+      "weight": 2408,
+      "timeTo60mph": 19.5,
+      "year": 72
+    },
+    {
+      "economy": 21,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 72,
+      "weight": 2401,
+      "timeTo60mph": 19.5,
+      "year": 73
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 75,
+      "weight": 2542,
+      "timeTo60mph": 17,
+      "year": 74
+    },
+    {
+      "economy": 24.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 60,
+      "weight": 2164,
+      "timeTo60mph": 22.1,
+      "year": 76
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 145,
+      "weight": 4055,
+      "timeTo60mph": 12,
+      "year": 76
+    },
+    {
+      "economy": 10,
+      "cylinders": 8,
+      "displacement": 307,
+      "power": 200,
+      "weight": 4376,
+      "timeTo60mph": 15,
+      "year": 70
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 82,
+      "weight": 2720,
+      "timeTo60mph": 19.4,
+      "year": 82
+    },
+    {
+      "economy": 15.5,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 190,
+      "weight": 4325,
+      "timeTo60mph": 12.2,
+      "year": 77
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 156,
+      "power": 92,
+      "weight": 2585,
+      "timeTo60mph": 14.5,
+      "year": 82
+    },
+    {
+      "economy": 17.6,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 85,
+      "weight": 3465,
+      "timeTo60mph": 16.6,
+      "year": 81
+    },
+    {
+      "economy": 18.5,
+      "cylinders": 8,
+      "displacement": 360,
+      "power": 150,
+      "weight": 3940,
+      "timeTo60mph": 13,
+      "year": 79
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 440,
+      "power": 215,
+      "weight": 4735,
+      "timeTo60mph": 11,
+      "year": 73
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 190,
+      "weight": 4422,
+      "timeTo60mph": 12.5,
+      "year": 72
+    },
+    {
+      "economy": 35,
+      "cylinders": 4,
+      "displacement": 72,
+      "power": 69,
+      "weight": 1613,
+      "timeTo60mph": 18,
+      "year": 71
+    },
+    {
+      "economy": 23.9,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 97,
+      "weight": 2405,
+      "timeTo60mph": 14.9,
+      "year": 78
+    },
+    {
+      "economy": 32.9,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 100,
+      "weight": 2615,
+      "timeTo60mph": 14.8,
+      "year": 81
+    },
+    {
+      "economy": 31.8,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 65,
+      "weight": 2020,
+      "timeTo60mph": 19.2,
+      "year": 79
+    },
+    {
+      "economy": 37,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 65,
+      "weight": 1975,
+      "timeTo60mph": 19.4,
+      "year": 81
+    },
+    {
+      "economy": 40.8,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 65,
+      "weight": 2110,
+      "timeTo60mph": 19.2,
+      "year": 80
+    },
+    {
+      "economy": 32.7,
+      "cylinders": 6,
+      "displacement": 168,
+      "power": 132,
+      "weight": 2910,
+      "timeTo60mph": 11.4,
+      "year": 80
+    },
+    {
+      "economy": 38,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 67,
+      "weight": 1995,
+      "timeTo60mph": 16.2,
+      "year": 82
+    },
+    {
+      "economy": 37.2,
+      "cylinders": 4,
+      "displacement": 86,
+      "power": 65,
+      "weight": 2019,
+      "timeTo60mph": 16.4,
+      "year": 80
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 92,
+      "weight": 2288,
+      "timeTo60mph": 17,
+      "year": 72
+    },
+    {
+      "economy": 37,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 92,
+      "weight": 2434,
+      "timeTo60mph": 15,
+      "year": 80
+    },
+    {
+      "economy": 27.2,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 97,
+      "weight": 2300,
+      "timeTo60mph": 14.7,
+      "year": 78
+    },
+    {
+      "economy": 22,
+      "cylinders": 4,
+      "displacement": 108,
+      "power": 94,
+      "weight": 2379,
+      "timeTo60mph": 16.5,
+      "year": 73
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 119,
+      "power": 97,
+      "weight": 2545,
+      "timeTo60mph": 17,
+      "year": 75
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 83,
+      "power": 61,
+      "weight": 2003,
+      "timeTo60mph": 19,
+      "year": 74
+    },
+    {
+      "economy": 24.2,
+      "cylinders": 6,
+      "displacement": 146,
+      "power": 120,
+      "weight": 2930,
+      "timeTo60mph": 13.8,
+      "year": 81
+    },
+    {
+      "economy": 22,
+      "cylinders": 6,
+      "displacement": 146,
+      "power": 97,
+      "weight": 2815,
+      "timeTo60mph": 14.5,
+      "year": 77
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 70,
+      "weight": 1990,
+      "timeTo60mph": 17,
+      "year": 76
+    },
+    {
+      "economy": 39.4,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 70,
+      "weight": 2070,
+      "timeTo60mph": 18.6,
+      "year": 78
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 67,
+      "weight": 1950,
+      "timeTo60mph": 19,
+      "year": 74
+    },
+    {
+      "economy": 33.5,
+      "cylinders": 4,
+      "displacement": 85,
+      "power": 70,
+      "weight": 1945,
+      "timeTo60mph": 16.8,
+      "year": 77
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 88,
+      "weight": 2130,
+      "timeTo60mph": 14.5,
+      "year": 70
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 88,
+      "weight": 2130,
+      "timeTo60mph": 14.5,
+      "year": 71
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 135,
+      "power": 84,
+      "weight": 2525,
+      "timeTo60mph": 16,
+      "year": 82
+    },
+    {
+      "economy": 25.8,
+      "cylinders": 4,
+      "displacement": 156,
+      "power": 92,
+      "weight": 2620,
+      "timeTo60mph": 14.4,
+      "year": 81
+    },
+    {
+      "economy": 20.6,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 110,
+      "weight": 3360,
+      "timeTo60mph": 16.6,
+      "year": 79
+    },
+    {
+      "economy": 20,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 100,
+      "weight": 3651,
+      "timeTo60mph": 17.7,
+      "year": 76
+    },
+    {
+      "economy": 18.6,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 110,
+      "weight": 3620,
+      "timeTo60mph": 18.7,
+      "year": 78
+    },
+    {
+      "economy": 19.1,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 90,
+      "weight": 3381,
+      "timeTo60mph": 18.7,
+      "year": 80
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 383,
+      "power": 170,
+      "weight": 3563,
+      "timeTo60mph": 10,
+      "year": 70
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 135,
+      "power": 84,
+      "weight": 2370,
+      "timeTo60mph": 13,
+      "year": 82
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 80,
+      "weight": 2164,
+      "timeTo60mph": 15,
+      "year": 72
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 97.5,
+      "power": 80,
+      "weight": 2126,
+      "timeTo60mph": 17,
+      "year": 72
+    },
+    {
+      "economy": 35.7,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 80,
+      "weight": 1915,
+      "timeTo60mph": 14.4,
+      "year": 79
+    },
+    {
+      "economy": 33.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 83,
+      "weight": 2075,
+      "timeTo60mph": 15.9,
+      "year": 77
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 79,
+      "weight": 2255,
+      "timeTo60mph": 17.7,
+      "year": 76
+    },
+    {
+      "economy": 27.9,
+      "cylinders": 4,
+      "displacement": 156,
+      "power": 105,
+      "weight": 2800,
+      "timeTo60mph": 14.4,
+      "year": 80
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 75,
+      "weight": 2125,
+      "timeTo60mph": 14.5,
+      "year": 74
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4190,
+      "timeTo60mph": 13,
+      "year": 76
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4457,
+      "timeTo60mph": 13.5,
+      "year": 74
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 3777,
+      "timeTo60mph": 12.5,
+      "year": 73
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 3755,
+      "timeTo60mph": 14,
+      "year": 76
+    },
+    {
+      "economy": 11,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 210,
+      "weight": 4382,
+      "timeTo60mph": 13.5,
+      "year": 70
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 3399,
+      "timeTo60mph": 11,
+      "year": 73
+    },
+    {
+      "economy": 19.4,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 140,
+      "weight": 3735,
+      "timeTo60mph": 13.2,
+      "year": 78
+    },
+    {
+      "economy": 17.5,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 140,
+      "weight": 4080,
+      "timeTo60mph": 13.7,
+      "year": 78
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 383,
+      "power": 180,
+      "weight": 4955,
+      "timeTo60mph": 11.5,
+      "year": 71
+    },
+    {
+      "economy": 15.5,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 145,
+      "weight": 4140,
+      "timeTo60mph": 13.7,
+      "year": 77
+    },
+    {
+      "economy": 30.9,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 75,
+      "weight": 2230,
+      "timeTo60mph": 14.5,
+      "year": 78
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 135,
+      "power": 84,
+      "weight": 2295,
+      "timeTo60mph": 11.6,
+      "year": 82
+    },
+    {
+      "economy": 18.2,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 135,
+      "weight": 3830,
+      "timeTo60mph": 15.2,
+      "year": 79
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 90,
+      "weight": 2265,
+      "timeTo60mph": 15.5,
+      "year": 73
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 116,
+      "power": 75,
+      "weight": 2246,
+      "timeTo60mph": 14,
+      "year": 74
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 88,
+      "power": 76,
+      "weight": 2065,
+      "timeTo60mph": 14.5,
+      "year": 71
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 75,
+      "weight": 2108,
+      "timeTo60mph": 15.5,
+      "year": 74
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 68,
+      "power": 49,
+      "weight": 1867,
+      "timeTo60mph": 19.5,
+      "year": 73
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 107,
+      "power": 86,
+      "weight": 2464,
+      "timeTo60mph": 15.5,
+      "year": 76
+    },
+    {
+      "economy": 37.3,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 69,
+      "weight": 2130,
+      "timeTo60mph": 14.7,
+      "year": 79
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 67,
+      "weight": 2000,
+      "timeTo60mph": 16,
+      "year": 74
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 92,
+      "weight": 2572,
+      "timeTo60mph": 14.9,
+      "year": 76
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 170,
+      "weight": 4746,
+      "timeTo60mph": 12,
+      "year": 71
+    },
+    {
+      "economy": 15.5,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 142,
+      "weight": 4054,
+      "timeTo60mph": 14.3,
+      "year": 79
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 167,
+      "weight": 4906,
+      "timeTo60mph": 12.5,
+      "year": 73
+    },
+    {
+      "economy": 29.9,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 65,
+      "weight": 2380,
+      "timeTo60mph": 20.7,
+      "year": 81
+    },
+    {
+      "economy": 34.4,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 65,
+      "weight": 2045,
+      "timeTo60mph": 16.2,
+      "year": 81
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 130,
+      "weight": 3870,
+      "timeTo60mph": 15,
+      "year": 76
+    },
+    {
+      "economy": 10,
+      "cylinders": 8,
+      "displacement": 360,
+      "power": 215,
+      "weight": 4615,
+      "timeTo60mph": 14,
+      "year": 70
+    },
+    {
+      "economy": 20.2,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 85,
+      "weight": 2965,
+      "timeTo60mph": 15.8,
+      "year": 78
+    },
+    {
+      "economy": 25.1,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 88,
+      "weight": 2720,
+      "timeTo60mph": 15.4,
+      "year": 78
+    },
+    {
+      "economy": 22.3,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 88,
+      "weight": 2890,
+      "timeTo60mph": 17.3,
+      "year": 79
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 92,
+      "weight": 2865,
+      "timeTo60mph": 16.4,
+      "year": 82
+    },
+    {
+      "economy": 26.4,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 88,
+      "weight": 2870,
+      "timeTo60mph": 18.1,
+      "year": 80
+    },
+    {
+      "economy": 36.1,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 66,
+      "weight": 1800,
+      "timeTo60mph": 14.4,
+      "year": 78
+    },
+    {
+      "economy": 18.1,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 139,
+      "weight": 3205,
+      "timeTo60mph": 11.2,
+      "year": 78
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 153,
+      "weight": 4129,
+      "timeTo60mph": 13,
+      "year": 72
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 153,
+      "weight": 4154,
+      "timeTo60mph": 13.5,
+      "year": 71
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 429,
+      "power": 198,
+      "weight": 4341,
+      "timeTo60mph": 10,
+      "year": 70
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 140,
+      "weight": 4294,
+      "timeTo60mph": 16,
+      "year": 72
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 140,
+      "weight": 4638,
+      "timeTo60mph": 16,
+      "year": 74
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 137,
+      "weight": 4042,
+      "timeTo60mph": 14.5,
+      "year": 73
+    },
+    {
+      "economy": 14.5,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 152,
+      "weight": 4215,
+      "timeTo60mph": 12.8,
+      "year": 76
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 140,
+      "weight": 4141,
+      "timeTo60mph": 14,
+      "year": 74
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 78,
+      "weight": 3574,
+      "timeTo60mph": 21,
+      "year": 76
+    },
+    {
+      "economy": 20.2,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 88,
+      "weight": 3060,
+      "timeTo60mph": 17.1,
+      "year": 81
+    },
+    {
+      "economy": 22,
+      "cylinders": 6,
+      "displacement": 232,
+      "power": 112,
+      "weight": 2835,
+      "timeTo60mph": 14.7,
+      "year": 82
+    },
+    {
+      "economy": 18.5,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 98,
+      "weight": 3525,
+      "timeTo60mph": 19,
+      "year": 77
+    },
+    {
+      "economy": 17.6,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 129,
+      "weight": 3725,
+      "timeTo60mph": 13.4,
+      "year": 79
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 158,
+      "weight": 4363,
+      "timeTo60mph": 13,
+      "year": 73
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 148,
+      "weight": 4657,
+      "timeTo60mph": 13.5,
+      "year": 75
+    },
+    {
+      "economy": 15,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 72,
+      "weight": 3158,
+      "timeTo60mph": 19.5,
+      "year": 75
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 88,
+      "weight": 3021,
+      "timeTo60mph": 16.5,
+      "year": 73
+    },
+    {
+      "economy": 21,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 85,
+      "weight": 2587,
+      "timeTo60mph": 16,
+      "year": 70
+    },
+    {
+      "economy": 24,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 81,
+      "weight": 3012,
+      "timeTo60mph": 17.6,
+      "year": 76
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 86,
+      "weight": 2790,
+      "timeTo60mph": 15.6,
+      "year": 82
+    },
+    {
+      "economy": 25.5,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 89,
+      "weight": 2755,
+      "timeTo60mph": 15.8,
+      "year": 77
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 129,
+      "weight": 3169,
+      "timeTo60mph": 12,
+      "year": 75
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 88,
+      "weight": 3139,
+      "timeTo60mph": 14.5,
+      "year": 71
+    },
+    {
+      "economy": 22,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 86,
+      "weight": 2395,
+      "timeTo60mph": 16,
+      "year": 72
+    },
+    {
+      "economy": 21,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 86,
+      "weight": 2226,
+      "timeTo60mph": 16.5,
+      "year": 72
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 171,
+      "power": 97,
+      "weight": 2984,
+      "timeTo60mph": 14.5,
+      "year": 75
+    },
+    {
+      "economy": 19,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 85,
+      "weight": 2310,
+      "timeTo60mph": 18.5,
+      "year": 73
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 83,
+      "weight": 2639,
+      "timeTo60mph": 17,
+      "year": 75
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 80,
+      "weight": 2451,
+      "timeTo60mph": 16.5,
+      "year": 74
+    },
+    {
+      "economy": 26.5,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 72,
+      "weight": 2565,
+      "timeTo60mph": 13.6,
+      "year": 76
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 79,
+      "weight": 2625,
+      "timeTo60mph": 18.6,
+      "year": 82
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 149,
+      "weight": 4335,
+      "timeTo60mph": 14.5,
+      "year": 77
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 88,
+      "weight": 3302,
+      "timeTo60mph": 15.5,
+      "year": 71
+    },
+    {
+      "economy": 17,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 140,
+      "weight": 3449,
+      "timeTo60mph": 10.5,
+      "year": 70
+    },
+    {
+      "economy": 9,
+      "cylinders": 8,
+      "displacement": 304,
+      "power": 193,
+      "weight": 4732,
+      "timeTo60mph": 18.5,
+      "year": 70
+    },
+    {
+      "economy": 31.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 68,
+      "weight": 2045,
+      "timeTo60mph": 18.5,
+      "year": 77
+    },
+    {
+      "economy": 29.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 68,
+      "weight": 2135,
+      "timeTo60mph": 16.6,
+      "year": 78
+    },
+    {
+      "economy": 32.4,
+      "cylinders": 4,
+      "displacement": 107,
+      "power": 72,
+      "weight": 2290,
+      "timeTo60mph": 17,
+      "year": 80
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 107,
+      "power": 75,
+      "weight": 2205,
+      "timeTo60mph": 14.5,
+      "year": 82
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 67,
+      "weight": 1965,
+      "timeTo60mph": 15.7,
+      "year": 82
+    },
+    {
+      "economy": 35.1,
+      "cylinders": 4,
+      "displacement": 81,
+      "power": 60,
+      "weight": 1760,
+      "timeTo60mph": 16.1,
+      "year": 81
+    },
+    {
+      "economy": 44.6,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 67,
+      "weight": 1850,
+      "timeTo60mph": 13.8,
+      "year": 80
+    },
+    {
+      "economy": 33,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 53,
+      "weight": 1795,
+      "timeTo60mph": 17.5,
+      "year": 75
+    },
+    {
+      "economy": 36.1,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 60,
+      "weight": 1800,
+      "timeTo60mph": 16.4,
+      "year": 78
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 97,
+      "weight": 2489,
+      "timeTo60mph": 15,
+      "year": 74
+    },
+    {
+      "economy": 33,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 53,
+      "weight": 1795,
+      "timeTo60mph": 17.4,
+      "year": 76
+    },
+    {
+      "economy": 38,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 67,
+      "weight": 1965,
+      "timeTo60mph": 15,
+      "year": 82
+    },
+    {
+      "economy": 33.7,
+      "cylinders": 4,
+      "displacement": 107,
+      "power": 75,
+      "weight": 2210,
+      "timeTo60mph": 14.4,
+      "year": 81
+    },
+    {
+      "economy": 34.1,
+      "cylinders": 4,
+      "displacement": 86,
+      "power": 65,
+      "weight": 1975,
+      "timeTo60mph": 15.2,
+      "year": 79
+    },
+    {
+      "economy": 18,
+      "cylinders": 3,
+      "displacement": 70,
+      "power": 90,
+      "weight": 2124,
+      "timeTo60mph": 13.5,
+      "year": 73
+    },
+    {
+      "economy": 31.3,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 75,
+      "weight": 2542,
+      "timeTo60mph": 17.5,
+      "year": 80
+    },
+    {
+      "economy": 31.6,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 74,
+      "weight": 2635,
+      "timeTo60mph": 18.3,
+      "year": 81
+    },
+    {
+      "economy": 34.1,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 68,
+      "weight": 1985,
+      "timeTo60mph": 16,
+      "year": 81
+    },
+    {
+      "economy": 37,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 68,
+      "weight": 2025,
+      "timeTo60mph": 18.2,
+      "year": 82
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 68,
+      "weight": 1970,
+      "timeTo60mph": 17.6,
+      "year": 82
+    },
+    {
+      "economy": 32.8,
+      "cylinders": 4,
+      "displacement": 78,
+      "power": 52,
+      "weight": 1985,
+      "timeTo60mph": 19.4,
+      "year": 78
+    },
+    {
+      "economy": 46.6,
+      "cylinders": 4,
+      "displacement": 86,
+      "power": 65,
+      "weight": 2110,
+      "timeTo60mph": 17.9,
+      "year": 80
+    },
+    {
+      "economy": 19,
+      "cylinders": 3,
+      "displacement": 70,
+      "power": 97,
+      "weight": 2330,
+      "timeTo60mph": 13.5,
+      "year": 72
+    },
+    {
+      "economy": 21.5,
+      "cylinders": 3,
+      "displacement": 80,
+      "power": 110,
+      "weight": 2720,
+      "timeTo60mph": 13.5,
+      "year": 77
+    },
+    {
+      "economy": 23.7,
+      "cylinders": 3,
+      "displacement": 70,
+      "power": 100,
+      "weight": 2420,
+      "timeTo60mph": 12.5,
+      "year": 80
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 146,
+      "power": 67,
+      "weight": 3250,
+      "timeTo60mph": 21.8,
+      "year": 80
+    },
+    {
+      "economy": 16.5,
+      "cylinders": 6,
+      "displacement": 168,
+      "power": 120,
+      "weight": 3820,
+      "timeTo60mph": 16.7,
+      "year": 76
+    },
+    {
+      "economy": 25.4,
+      "cylinders": 5,
+      "displacement": 183,
+      "power": 77,
+      "weight": 3530,
+      "timeTo60mph": 20.1,
+      "year": 79
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 86,
+      "weight": 2220,
+      "timeTo60mph": 14,
+      "year": 71
+    },
+    {
+      "economy": 21,
+      "cylinders": 6,
+      "displacement": 155,
+      "power": 107,
+      "weight": 2472,
+      "timeTo60mph": 14,
+      "year": 73
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 130,
+      "weight": 4295,
+      "timeTo60mph": 14.9,
+      "year": 77
+    },
+    {
+      "economy": 16.5,
+      "cylinders": 8,
+      "displacement": 351,
+      "power": 138,
+      "weight": 3955,
+      "timeTo60mph": 13.2,
+      "year": 79
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 70,
+      "weight": 2125,
+      "timeTo60mph": 17.3,
+      "year": 82
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 429,
+      "power": 198,
+      "weight": 4952,
+      "timeTo60mph": 11.5,
+      "year": 73
+    },
+    {
+      "economy": 11,
+      "cylinders": 8,
+      "displacement": 429,
+      "power": 208,
+      "weight": 4633,
+      "timeTo60mph": 11,
+      "year": 72
+    },
+    {
+      "economy": 20.2,
+      "cylinders": 8,
+      "displacement": 302,
+      "power": 139,
+      "weight": 3570,
+      "timeTo60mph": 12.8,
+      "year": 78
+    },
+    {
+      "economy": 15,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 72,
+      "weight": 3432,
+      "timeTo60mph": 21,
+      "year": 75
+    },
+    {
+      "economy": 19.8,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 85,
+      "weight": 2990,
+      "timeTo60mph": 18.2,
+      "year": 79
+    },
+    {
+      "economy": 20.8,
+      "cylinders": 6,
+      "displacement": 200,
+      "power": 85,
+      "weight": 3070,
+      "timeTo60mph": 16.7,
+      "year": 78
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 88,
+      "weight": 2160,
+      "timeTo60mph": 14.5,
+      "year": 82
+    },
+    {
+      "economy": 38,
+      "cylinders": 6,
+      "displacement": 262,
+      "power": 85,
+      "weight": 3015,
+      "timeTo60mph": 17,
+      "year": 82
+    },
+    {
+      "economy": 26.6,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 105,
+      "weight": 3725,
+      "timeTo60mph": 19,
+      "year": 81
+    },
+    {
+      "economy": 19.9,
+      "cylinders": 8,
+      "displacement": 260,
+      "power": 110,
+      "weight": 3365,
+      "timeTo60mph": 15.5,
+      "year": 78
+    },
+    {
+      "economy": 23.9,
+      "cylinders": 8,
+      "displacement": 260,
+      "power": 90,
+      "weight": 3420,
+      "timeTo60mph": 22.2,
+      "year": 79
+    },
+    {
+      "economy": 17,
+      "cylinders": 8,
+      "displacement": 260,
+      "power": 110,
+      "weight": 4060,
+      "timeTo60mph": 19,
+      "year": 77
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 160,
+      "weight": 4456,
+      "timeTo60mph": 13.5,
+      "year": 72
+    },
+    {
+      "economy": 26.8,
+      "cylinders": 6,
+      "displacement": 173,
+      "power": 115,
+      "weight": 2700,
+      "timeTo60mph": 12.9,
+      "year": 79
+    },
+    {
+      "economy": 11,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 180,
+      "weight": 3664,
+      "timeTo60mph": 11,
+      "year": 73
+    },
+    {
+      "economy": 23.8,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 85,
+      "weight": 2855,
+      "timeTo60mph": 17.6,
+      "year": 78
+    },
+    {
+      "economy": 12,
+      "cylinders": 8,
+      "displacement": 350,
+      "power": 180,
+      "weight": 4499,
+      "timeTo60mph": 12.5,
+      "year": 73
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 116,
+      "power": 81,
+      "weight": 2220,
+      "timeTo60mph": 16.9,
+      "year": 76
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 116,
+      "power": 90,
+      "weight": 2123,
+      "timeTo60mph": 14,
+      "year": 71
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 116,
+      "power": 75,
+      "weight": 2158,
+      "timeTo60mph": 15.5,
+      "year": 73
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 78,
+      "weight": 2300,
+      "timeTo60mph": 14.5,
+      "year": 74
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 70,
+      "weight": 2074,
+      "timeTo60mph": 19.5,
+      "year": 71
+    },
+    {
+      "economy": 21,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 87,
+      "weight": 2979,
+      "timeTo60mph": 19.5,
+      "year": 72
+    },
+    {
+      "economy": 19,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 88,
+      "weight": 3270,
+      "timeTo60mph": 21.9,
+      "year": 76
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 88,
+      "weight": 2957,
+      "timeTo60mph": 17,
+      "year": 75
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 110,
+      "power": 87,
+      "weight": 2672,
+      "timeTo60mph": 17.5,
+      "year": 70
+    },
+    {
+      "economy": 27.2,
+      "cylinders": 4,
+      "displacement": 141,
+      "power": 71,
+      "weight": 3190,
+      "timeTo60mph": 24.8,
+      "year": 79
+    },
+    {
+      "economy": 28.1,
+      "cylinders": 4,
+      "displacement": 141,
+      "power": 80,
+      "weight": 3230,
+      "timeTo60mph": 20.4,
+      "year": 81
+    },
+    {
+      "economy": 16.2,
+      "cylinders": 6,
+      "displacement": 163,
+      "power": 133,
+      "weight": 3410,
+      "timeTo60mph": 15.8,
+      "year": 78
+    },
+    {
+      "economy": 25.5,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 96,
+      "weight": 2300,
+      "timeTo60mph": 15.5,
+      "year": 77
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 340,
+      "power": 160,
+      "weight": 3609,
+      "timeTo60mph": 8,
+      "year": 70
+    },
+    {
+      "economy": 39,
+      "cylinders": 4,
+      "displacement": 86,
+      "power": 64,
+      "weight": 1875,
+      "timeTo60mph": 16.4,
+      "year": 81
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 91,
+      "power": 70,
+      "weight": 1955,
+      "timeTo60mph": 20.5,
+      "year": 71
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 360,
+      "power": 170,
+      "weight": 4654,
+      "timeTo60mph": 13,
+      "year": 73
+    },
+    {
+      "economy": 20,
+      "cylinders": 6,
+      "displacement": 198,
+      "power": 95,
+      "weight": 3102,
+      "timeTo60mph": 16.5,
+      "year": 74
+    },
+    {
+      "economy": 22,
+      "cylinders": 6,
+      "displacement": 198,
+      "power": 95,
+      "weight": 2833,
+      "timeTo60mph": 15.5,
+      "year": 70
+    },
+    {
+      "economy": 23,
+      "cylinders": 6,
+      "displacement": 198,
+      "power": 95,
+      "weight": 2904,
+      "timeTo60mph": 16,
+      "year": 73
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4237,
+      "timeTo60mph": 14.5,
+      "year": 73
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4096,
+      "timeTo60mph": 13,
+      "year": 71
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 440,
+      "power": 215,
+      "weight": 4312,
+      "timeTo60mph": 8.5,
+      "year": 70
+    },
+    {
+      "economy": 15,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4135,
+      "timeTo60mph": 13.5,
+      "year": 72
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 95,
+      "weight": 3785,
+      "timeTo60mph": 19,
+      "year": 75
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4498,
+      "timeTo60mph": 14.5,
+      "year": 75
+    },
+    {
+      "economy": 34.7,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 63,
+      "weight": 2215,
+      "timeTo60mph": 14.9,
+      "year": 81
+    },
+    {
+      "economy": 38,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 63,
+      "weight": 2125,
+      "timeTo60mph": 14.7,
+      "year": 82
+    },
+    {
+      "economy": 34.5,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 70,
+      "weight": 2150,
+      "timeTo60mph": 14.9,
+      "year": 79
+    },
+    {
+      "economy": 34.2,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 70,
+      "weight": 2200,
+      "timeTo60mph": 13.2,
+      "year": 79
+    },
+    {
+      "economy": 27.2,
+      "cylinders": 4,
+      "displacement": 135,
+      "power": 84,
+      "weight": 2490,
+      "timeTo60mph": 15.7,
+      "year": 81
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 135,
+      "power": 84,
+      "weight": 2385,
+      "timeTo60mph": 12.9,
+      "year": 81
+    },
+    {
+      "economy": 23.2,
+      "cylinders": 4,
+      "displacement": 156,
+      "power": 105,
+      "weight": 2745,
+      "timeTo60mph": 16.7,
+      "year": 78
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 4077,
+      "timeTo60mph": 14,
+      "year": 72
+    },
+    {
+      "economy": 16,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 105,
+      "weight": 3439,
+      "timeTo60mph": 15.5,
+      "year": 71
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 105,
+      "weight": 3613,
+      "timeTo60mph": 16.5,
+      "year": 74
+    },
+    {
+      "economy": 18,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 3436,
+      "timeTo60mph": 11,
+      "year": 70
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 95,
+      "weight": 3264,
+      "timeTo60mph": 16,
+      "year": 75
+    },
+    {
+      "economy": 18,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 105,
+      "weight": 3121,
+      "timeTo60mph": 16.5,
+      "year": 73
+    },
+    {
+      "economy": 22,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 100,
+      "weight": 3233,
+      "timeTo60mph": 15.4,
+      "year": 76
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 100,
+      "weight": 3630,
+      "timeTo60mph": 17.7,
+      "year": 77
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 318,
+      "power": 150,
+      "weight": 3940,
+      "timeTo60mph": 13.2,
+      "year": 76
+    },
+    {
+      "economy": 20.5,
+      "cylinders": 6,
+      "displacement": 225,
+      "power": 100,
+      "weight": 3430,
+      "timeTo60mph": 17.2,
+      "year": 78
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 140,
+      "power": 78,
+      "weight": 2592,
+      "timeTo60mph": 18.5,
+      "year": 75
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 175,
+      "weight": 4464,
+      "timeTo60mph": 11.5,
+      "year": 71
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 175,
+      "weight": 4385,
+      "timeTo60mph": 12,
+      "year": 72
+    },
+    {
+      "economy": 14,
+      "cylinders": 8,
+      "displacement": 455,
+      "power": 225,
+      "weight": 4425,
+      "timeTo60mph": 10,
+      "year": 70
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 170,
+      "weight": 4668,
+      "timeTo60mph": 11.5,
+      "year": 75
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 100,
+      "weight": 3282,
+      "timeTo60mph": 15,
+      "year": 71
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 180,
+      "weight": 4220,
+      "timeTo60mph": 11.1,
+      "year": 77
+    },
+    {
+      "economy": 16,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 230,
+      "weight": 4278,
+      "timeTo60mph": 9.5,
+      "year": 73
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 112,
+      "power": 85,
+      "weight": 2575,
+      "timeTo60mph": 16.2,
+      "year": 82
+    },
+    {
+      "economy": 21.5,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 115,
+      "weight": 3245,
+      "timeTo60mph": 15.4,
+      "year": 79
+    },
+    {
+      "economy": 19.2,
+      "cylinders": 6,
+      "displacement": 231,
+      "power": 105,
+      "weight": 3535,
+      "timeTo60mph": 19.2,
+      "year": 78
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 2735,
+      "timeTo60mph": 18,
+      "year": 82
+    },
+    {
+      "economy": 33.5,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 90,
+      "weight": 2556,
+      "timeTo60mph": 13.2,
+      "year": 79
+    },
+    {
+      "economy": 13,
+      "cylinders": 8,
+      "displacement": 400,
+      "power": 175,
+      "weight": 5140,
+      "timeTo60mph": 12,
+      "year": 71
+    },
+    {
+      "economy": 24.5,
+      "cylinders": 4,
+      "displacement": 151,
+      "power": 88,
+      "weight": 2740,
+      "timeTo60mph": 16,
+      "year": 77
+    },
+    {
+      "economy": 18.5,
+      "cylinders": 6,
+      "displacement": 250,
+      "power": 110,
+      "weight": 3645,
+      "timeTo60mph": 16.2,
+      "year": 76
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 96,
+      "power": 69,
+      "weight": 2189,
+      "timeTo60mph": 18,
+      "year": 72
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 101,
+      "power": 83,
+      "weight": 2202,
+      "timeTo60mph": 15.3,
+      "year": 76
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 58,
+      "weight": 1825,
+      "timeTo60mph": 18.6,
+      "year": 77
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 104,
+      "power": 95,
+      "weight": 2375,
+      "timeTo60mph": 17.5,
+      "year": 70
+    },
+    {
+      "economy": 21.6,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 115,
+      "weight": 2795,
+      "timeTo60mph": 15.7,
+      "year": 78
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 110,
+      "weight": 2660,
+      "timeTo60mph": 14,
+      "year": 73
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 115,
+      "weight": 2671,
+      "timeTo60mph": 13.5,
+      "year": 75
+    },
+    {
+      "economy": 30,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 67,
+      "weight": 1985,
+      "timeTo60mph": 16.4,
+      "year": 77
+    },
+    {
+      "economy": 33.8,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 67,
+      "weight": 2145,
+      "timeTo60mph": 18,
+      "year": 80
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 108,
+      "power": 93,
+      "weight": 2391,
+      "timeTo60mph": 15.5,
+      "year": 74
+    },
+    {
+      "economy": 32.3,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 67,
+      "weight": 2065,
+      "timeTo60mph": 17.8,
+      "year": 81
+    },
+    {
+      "economy": 20,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 88,
+      "weight": 2279,
+      "timeTo60mph": 19,
+      "year": 73
+    },
+    {
+      "economy": 21.1,
+      "cylinders": 4,
+      "displacement": 134,
+      "power": 95,
+      "weight": 2515,
+      "timeTo60mph": 14.8,
+      "year": 78
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 144,
+      "power": 96,
+      "weight": 2665,
+      "timeTo60mph": 13.9,
+      "year": 82
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 71,
+      "power": 65,
+      "weight": 1773,
+      "timeTo60mph": 19,
+      "year": 71
+    },
+    {
+      "economy": 32,
+      "cylinders": 4,
+      "displacement": 71,
+      "power": 65,
+      "weight": 1836,
+      "timeTo60mph": 21,
+      "year": 74
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 88,
+      "weight": 2100,
+      "timeTo60mph": 16.5,
+      "year": 72
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 75,
+      "weight": 2265,
+      "timeTo60mph": 18.2,
+      "year": 77
+    },
+    {
+      "economy": 38.1,
+      "cylinders": 4,
+      "displacement": 89,
+      "power": 60,
+      "weight": 1968,
+      "timeTo60mph": 18.8,
+      "year": 80
+    },
+    {
+      "economy": 28,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 75,
+      "weight": 2155,
+      "timeTo60mph": 16.4,
+      "year": 76
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 75,
+      "weight": 2171,
+      "timeTo60mph": 16,
+      "year": 75
+    },
+    {
+      "economy": 32.2,
+      "cylinders": 4,
+      "displacement": 108,
+      "power": 75,
+      "weight": 2265,
+      "timeTo60mph": 15.2,
+      "year": 80
+    },
+    {
+      "economy": 32.4,
+      "cylinders": 4,
+      "displacement": 108,
+      "power": 75,
+      "weight": 2350,
+      "timeTo60mph": 16.8,
+      "year": 81
+    },
+    {
+      "economy": 34,
+      "cylinders": 4,
+      "displacement": 108,
+      "power": 70,
+      "weight": 2245,
+      "timeTo60mph": 16.9,
+      "year": 82
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 113,
+      "power": 95,
+      "weight": 2278,
+      "timeTo60mph": 15.5,
+      "year": 72
+    },
+    {
+      "economy": 29.8,
+      "cylinders": 4,
+      "displacement": 134,
+      "power": 90,
+      "weight": 2711,
+      "timeTo60mph": 15.5,
+      "year": 80
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 113,
+      "power": 95,
+      "weight": 2372,
+      "timeTo60mph": 15,
+      "year": 70
+    },
+    {
+      "economy": 24,
+      "cylinders": 4,
+      "displacement": 134,
+      "power": 96,
+      "weight": 2702,
+      "timeTo60mph": 13.5,
+      "year": 75
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 113,
+      "power": 95,
+      "weight": 2228,
+      "timeTo60mph": 14,
+      "year": 71
+    },
+    {
+      "economy": 27.5,
+      "cylinders": 4,
+      "displacement": 134,
+      "power": 95,
+      "weight": 2560,
+      "timeTo60mph": 14.2,
+      "year": 78
+    },
+    {
+      "economy": 31,
+      "cylinders": 4,
+      "displacement": 76,
+      "power": 52,
+      "weight": 1649,
+      "timeTo60mph": 16.5,
+      "year": 74
+    },
+    {
+      "economy": 25.4,
+      "cylinders": 6,
+      "displacement": 168,
+      "power": 116,
+      "weight": 2900,
+      "timeTo60mph": 12.6,
+      "year": 81
+    },
+    {
+      "economy": 19,
+      "cylinders": 6,
+      "displacement": 156,
+      "power": 108,
+      "weight": 2930,
+      "timeTo60mph": 15.5,
+      "year": 76
+    },
+    {
+      "economy": 20,
+      "cylinders": 6,
+      "displacement": 156,
+      "power": 122,
+      "weight": 2807,
+      "timeTo60mph": 13.5,
+      "year": 73
+    },
+    {
+      "economy": 39.1,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 58,
+      "weight": 1755,
+      "timeTo60mph": 16.9,
+      "year": 81
+    },
+    {
+      "economy": 37.7,
+      "cylinders": 4,
+      "displacement": 89,
+      "power": 62,
+      "weight": 2050,
+      "timeTo60mph": 17.3,
+      "year": 81
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 120,
+      "power": 97,
+      "weight": 2506,
+      "timeTo60mph": 14.5,
+      "year": 72
+    },
+    {
+      "economy": 35,
+      "cylinders": 4,
+      "displacement": 122,
+      "power": 88,
+      "weight": 2500,
+      "timeTo60mph": 15.1,
+      "year": 80
+    },
+    {
+      "economy": 29.8,
+      "cylinders": 4,
+      "displacement": 89,
+      "power": 62,
+      "weight": 1845,
+      "timeTo60mph": 15.3,
+      "year": 80
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 46,
+      "weight": 1835,
+      "timeTo60mph": 20.5,
+      "year": 70
+    },
+    {
+      "economy": 22,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 76,
+      "weight": 2511,
+      "timeTo60mph": 18,
+      "year": 72
+    },
+    {
+      "economy": 43.4,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 48,
+      "weight": 2335,
+      "timeTo60mph": 23.7,
+      "year": 80
+    },
+    {
+      "economy": 25,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 71,
+      "weight": 2223,
+      "timeTo60mph": 16.5,
+      "year": 75
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 79,
+      "power": 67,
+      "weight": 1963,
+      "timeTo60mph": 15.5,
+      "year": 74
+    },
+    {
+      "economy": 30.5,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 78,
+      "weight": 2190,
+      "timeTo60mph": 14.1,
+      "year": 77
+    },
+    {
+      "economy": 33,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 74,
+      "weight": 2190,
+      "timeTo60mph": 14.2,
+      "year": 81
+    },
+    {
+      "economy": 27,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 60,
+      "weight": 1834,
+      "timeTo60mph": 19,
+      "year": 71
+    },
+    {
+      "economy": 44,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 52,
+      "weight": 2130,
+      "timeTo60mph": 24.6,
+      "year": 82
+    },
+    {
+      "economy": 44.3,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 48,
+      "weight": 2085,
+      "timeTo60mph": 21.7,
+      "year": 80
+    },
+    {
+      "economy": 43.1,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 48,
+      "weight": 1985,
+      "timeTo60mph": 21.5,
+      "year": 78
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 78,
+      "weight": 1940,
+      "timeTo60mph": 14.5,
+      "year": 77
+    },
+    {
+      "economy": 31.9,
+      "cylinders": 4,
+      "displacement": 89,
+      "power": 71,
+      "weight": 1925,
+      "timeTo60mph": 14,
+      "year": 79
+    },
+    {
+      "economy": 36,
+      "cylinders": 4,
+      "displacement": 105,
+      "power": 74,
+      "weight": 1980,
+      "timeTo60mph": 15.3,
+      "year": 82
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 70,
+      "weight": 1937,
+      "timeTo60mph": 14,
+      "year": 75
+    },
+    {
+      "economy": 29,
+      "cylinders": 4,
+      "displacement": 90,
+      "power": 70,
+      "weight": 1937,
+      "timeTo60mph": 14.2,
+      "year": 76
+    },
+    {
+      "economy": 29.5,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 71,
+      "weight": 1825,
+      "timeTo60mph": 12.2,
+      "year": 76
+    },
+    {
+      "economy": 41.5,
+      "cylinders": 4,
+      "displacement": 98,
+      "power": 76,
+      "weight": 2144,
+      "timeTo60mph": 14.7,
+      "year": 80
+    },
+    {
+      "economy": 31.5,
+      "cylinders": 4,
+      "displacement": 89,
+      "power": 71,
+      "weight": 1990,
+      "timeTo60mph": 14.9,
+      "year": 78
+    },
+    {
+      "economy": 26,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 46,
+      "weight": 1950,
+      "timeTo60mph": 21,
+      "year": 73
+    },
+    {
+      "economy": 23,
+      "cylinders": 4,
+      "displacement": 97,
+      "power": 54,
+      "weight": 2254,
+      "timeTo60mph": 23.5,
+      "year": 72
+    },
+    {
+      "economy": 19,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 112,
+      "weight": 2868,
+      "timeTo60mph": 15.5,
+      "year": 73
+    },
+    {
+      "economy": 18,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 112,
+      "weight": 2933,
+      "timeTo60mph": 14.5,
+      "year": 72
+    },
+    {
+      "economy": 22,
+      "cylinders": 4,
+      "displacement": 121,
+      "power": 98,
+      "weight": 2945,
+      "timeTo60mph": 14.5,
+      "year": 75
+    },
+    {
+      "economy": 20,
+      "cylinders": 4,
+      "displacement": 130,
+      "power": 102,
+      "weight": 3150,
+      "timeTo60mph": 15.7,
+      "year": 76
+    },
+    {
+      "economy": 17,
+      "cylinders": 6,
+      "displacement": 163,
+      "power": 125,
+      "weight": 3140,
+      "timeTo60mph": 13.6,
+      "year": 78
+    },
+    {
+      "economy": 30.7,
+      "cylinders": 6,
+      "displacement": 145,
+      "power": 76,
+      "weight": 3160,
+      "timeTo60mph": 19.6,
+      "year": 81
+    }
+  ],
+  "uncertainty": [
+    {
+      "economy": 6.2027,
+      "cylinders": 1.5987,
+      "displacement": 5.7341,
+      "power": 5.8579,
+      "weight": 8.3583,
+      "timeTo60mph": 5.9354,
+      "year": 3.6888
+    },
+    {
+      "economy": 3.9357,
+      "cylinders": 0.406,
+      "displacement": 3.9059,
+      "power": 4.6167,
+      "weight": 6.7043,
+      "timeTo60mph": 4.6633,
+      "year": 3.2486
+    },
+    {
+      "economy": 6.1847,
+      "cylinders": 1.0457,
+      "displacement": 5.3895,
+      "power": 5.3203,
+      "weight": 7.8194,
+      "timeTo60mph": 5.7723,
+      "year": 3.647
+    },
+    {
+      "economy": 1.6494,
+      "cylinders": -0,
+      "displacement": 1.875,
+      "power": 3.3278,
+      "weight": 3.875,
+      "timeTo60mph": 2.1085,
+      "year": 1.6774
+    },
+    {
+      "economy": 2.4772,
+      "cylinders": -0,
+      "displacement": 2.3829,
+      "power": 2.6468,
+      "weight": 4,
+      "timeTo60mph": 3.1556,
+      "year": 2.4835
+    },
+    {
+      "economy": 2.6556,
+      "cylinders": -0,
+      "displacement": 2.5778,
+      "power": 2.9772,
+      "weight": 4,
+      "timeTo60mph": 3.125,
+      "year": 2.7806
+    },
+    {
+      "economy": 3.1019,
+      "cylinders": -0,
+      "displacement": 3.3816,
+      "power": 3.1692,
+      "weight": 4.0875,
+      "timeTo60mph": 3.2928,
+      "year": 2.419
+    },
+    {
+      "economy": 3.3414,
+      "cylinders": -0,
+      "displacement": 3.4414,
+      "power": 3.5842,
+      "weight": 4.3219,
+      "timeTo60mph": 3.9219,
+      "year": 2.3955
+    },
+    {
+      "economy": 3.4594,
+      "cylinders": -0,
+      "displacement": 2.3685,
+      "power": 2.914,
+      "weight": 3.4594,
+      "timeTo60mph": 3.0958,
+      "year": 1.8676
+    },
+    {
+      "economy": 3.1396,
+      "cylinders": 0.971,
+      "displacement": 2.9736,
+      "power": 2.3329,
+      "weight": 3.9069,
+      "timeTo60mph": 2.9736,
+      "year": 2.4729
+    },
+    {
+      "economy": 3.7842,
+      "cylinders": -0,
+      "displacement": 2.6589,
+      "power": 3.2464,
+      "weight": 3.9842,
+      "timeTo60mph": 3.9842,
+      "year": 2.1211
+    },
+    {
+      "economy": 4.4697,
+      "cylinders": -0,
+      "displacement": 3.7004,
+      "power": 3.8731,
+      "weight": 4.4697,
+      "timeTo60mph": 4.1329,
+      "year": 2.9172
+    },
+    {
+      "economy": 4.7726,
+      "cylinders": -0,
+      "displacement": 4.1823,
+      "power": 4.1479,
+      "weight": 5.1316,
+      "timeTo60mph": 4.5607,
+      "year": 2.8512
+    },
+    {
+      "economy": 4.0931,
+      "cylinders": -0,
+      "displacement": 3.9502,
+      "power": 4.209,
+      "weight": 4.8074,
+      "timeTo60mph": 4.209,
+      "year": 3.0297
+    },
+    {
+      "economy": 4.2084,
+      "cylinders": 0.2285,
+      "displacement": 3.9303,
+      "power": 3.9545,
+      "weight": 4.6067,
+      "timeTo60mph": 4.1064,
+      "year": 3.2356
+    },
+    {
+      "economy": 4.2534,
+      "cylinders": -0,
+      "displacement": 3.8518,
+      "power": 4.3074,
+      "weight": 4.8074,
+      "timeTo60mph": 4.5216,
+      "year": 2.9781
+    },
+    {
+      "economy": 3.8219,
+      "cylinders": 1.0219,
+      "displacement": 3.8464,
+      "power": 3.9842,
+      "weight": 4.1219,
+      "timeTo60mph": 3.7219,
+      "year": 3.0842
+    },
+    {
+      "economy": 3.2639,
+      "cylinders": 1.1401,
+      "displacement": 3.3372,
+      "power": 3.7345,
+      "weight": 4.0875,
+      "timeTo60mph": 3.3372,
+      "year": 3.0575
+    },
+    {
+      "economy": 3.6901,
+      "cylinders": 0.6723,
+      "displacement": 2.8895,
+      "power": 3.2639,
+      "weight": 3.9698,
+      "timeTo60mph": 3.5725,
+      "year": 3.0575
+    },
+    {
+      "economy": 3.9161,
+      "cylinders": -0,
+      "displacement": 3.0416,
+      "power": 3.6538,
+      "weight": 4.3923,
+      "timeTo60mph": 3.9161,
+      "year": 3.1009
+    },
+    {
+      "economy": 3.3565,
+      "cylinders": 0.2668,
+      "displacement": 2.8288,
+      "power": 3.0449,
+      "weight": 4.4594,
+      "timeTo60mph": 3.5726,
+      "year": 3.0106
+    },
+    {
+      "economy": 3.375,
+      "cylinders": -0,
+      "displacement": 2.25,
+      "power": 2.5778,
+      "weight": 3.875,
+      "timeTo60mph": 4,
+      "year": 2.6556
+    }
+  ]
+}
