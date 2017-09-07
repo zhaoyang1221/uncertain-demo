@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 	$("#xAxisForDimensionScatter").selectmenu({
 		width: 130
 	});
@@ -42,7 +42,6 @@ function drawDimensionScatter() {
 		yCat = "sd";
 
 
-
 //初始化比例尺
 	var xScale = d3.scale.linear().range([0, plotAreaWidth]).nice();
 	var yScale = d3.scale.linear().range([plotAreaHeight, 0]).nice();
@@ -52,13 +51,21 @@ function drawDimensionScatter() {
 		if (error) {
 			throw error;
 		}
-		// console.log(data);
+		console.log(data);
 
-		var xMax = d3.max(data, function(d) { return d[xCat]; }) * 1.05,
-			xMin = d3.min(data, function(d) { return d[xCat]; }),
+		var xMax = d3.max(data, function (d) {
+				return d[xCat];
+			}) * 1.05,
+			xMin = d3.min(data, function (d) {
+				return d[xCat];
+			}),
 			xMin = xMin > 0 ? 0 : xMin,
-			yMax = d3.max(data, function(d) { return d[yCat]; }) * 1.05,
-			yMin = d3.min(data, function(d) { return d[yCat]; }),
+			yMax = d3.max(data, function (d) {
+				return d[yCat];
+			}) * 1.05,
+			yMin = d3.min(data, function (d) {
+				return d[yCat];
+			}),
 			yMin = yMin > 0 ? 0 : yMin;
 
 		xScale.domain([xMin, xMax]);
@@ -77,8 +84,14 @@ function drawDimensionScatter() {
 		var tip = d3.tip()
 			.attr("class", "d3-tip")
 			.offset([-10, 0])
-			.html(function(d) {
-				return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
+			.html(function (d) {
+				return "<h2>" + d["_row"] + "</h2>"
+					+ "mean" + ": " + d["mean"] + "<br>"
+					+ "sd" + ": " + d["sd"] + "<br>"
+					+ "median" + ": " + d["median"] + "<br>"
+					+ "min" + ": " + d["min"] + "<br>"
+					+ "max" + ": " + d["max"] + "<br>"
+					+ "uncertainty" + ": " + d["uncertainty"] + "<br>";
 			});
 
 		var zoomBeh = d3.behavior.zoom()
@@ -92,7 +105,7 @@ function drawDimensionScatter() {
 			.attr('width', width)
 			.attr('height', height)
 			.append('g')
-			.attr('transform', 'translate(' + padding.left +',' + padding.top + ')')
+			.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
 			.call(zoomBeh);
 
 		svg.call(tip);
@@ -151,12 +164,15 @@ function drawDimensionScatter() {
 			.enter().append("circle")
 			.classed("dot", true)
 			// .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
-			.attr("r", 5)
+			.attr("r", 10)
 			.attr("transform", transform)
 			// .style("fill", function(d) { return color(d[colorCat]); })
 			.style("fill", "blue")
 			.on("mouseover", tip.show)
-			.on("mouseout", tip.hide);
+			.on("mouseout", tip.hide)
+			.on("click", function (d) {
+				clickDot(d)
+			});
 
 		/**
 		 * 设置button动作
@@ -164,20 +180,29 @@ function drawDimensionScatter() {
 		d3.select("#axisChangeButton").on("click", change);
 
 		function change() {
-            xCat = $("#xAxisForDimensionScatter").val();
-            yCat = $("#yAxisForDimensionScatter").val();
+			xCat = $("#xAxisForDimensionScatter").val();
+			yCat = $("#yAxisForDimensionScatter").val();
 
-			xMax = d3.max(data, function(d) { return d[xCat]; });
-			xMin = d3.min(data, function(d) { return d[xCat]; });
+			xMax = d3.max(data, function (d) {
+				return d[xCat];
+			});
+			xMin = d3.min(data, function (d) {
+				return d[xCat];
+			});
 
-			yMax = d3.max(data, function (d) { return d[yCat];});
-			yMin = d3.min(data, function (d) { return d[yCat];});
+			yMax = d3.max(data, function (d) {
+				return d[yCat];
+			});
+			yMin = d3.min(data, function (d) {
+				return d[yCat];
+			});
 
 			zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
 
 			var svg = container.transition();
 
 			svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
+			svg.select(".y.axis").duration(750).call(yAxis).select(".label").text(yCat);
 
 			objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
 		}
@@ -189,8 +214,17 @@ function drawDimensionScatter() {
 			svg.selectAll(".dot")
 				.attr("transform", transform);
 		}
+
 		function transform(d) {
 			return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
+		}
+
+		function clickDot(d) {
+			// d3.select(this).style("fill", "white");
+			console.log(d["_row"]);
+			// console.log(this);
+
+
 		}
 	});
 }
@@ -227,11 +261,19 @@ function drawRowDataScatter() {
 		}
 		// console.log(data);
 
-		var xMax = d3.max(data, function(d) { return d[xCat]; }) * 1.05,
-			xMin = d3.min(data, function(d) { return d[xCat]; }),
+		var xMax = d3.max(data, function (d) {
+				return d[xCat];
+			}) * 1.05,
+			xMin = d3.min(data, function (d) {
+				return d[xCat];
+			}),
 			xMin = xMin > 0 ? 0 : xMin,
-			yMax = d3.max(data, function(d) { return d[yCat]; }) * 1.05,
-			yMin = d3.min(data, function(d) { return d[yCat]; }),
+			yMax = d3.max(data, function (d) {
+				return d[yCat];
+			}) * 1.05,
+			yMin = d3.min(data, function (d) {
+				return d[yCat];
+			}),
 			yMin = yMin > 0 ? 0 : yMin;
 
 		xScale.domain([xMin, xMax]);
@@ -250,7 +292,7 @@ function drawRowDataScatter() {
 		var tip = d3.tip()
 			.attr("class", "d3-tip")
 			.offset([-10, 0])
-			.html(function(d) {
+			.html(function (d) {
 				return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
 			});
 
@@ -264,7 +306,7 @@ function drawRowDataScatter() {
 			.attr('width', width)
 			.attr('height', height)
 			.append('g')
-			.attr('transform', 'translate(' + padding.left +',' + padding.top + ')')
+			.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
 			.call(zoomBeh);
 
 		svg.call(tip);
@@ -337,8 +379,12 @@ function drawRowDataScatter() {
 
 		function change() {
 			xCat = "median";
-			xMax = d3.max(data, function(d) { return d[xCat]; });
-			xMin = d3.min(data, function(d) { return d[xCat]; });
+			xMax = d3.max(data, function (d) {
+				return d[xCat];
+			});
+			xMin = d3.min(data, function (d) {
+				return d[xCat];
+			});
 
 			zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
 
@@ -356,6 +402,7 @@ function drawRowDataScatter() {
 			svg.selectAll(".dot")
 				.attr("transform", transform);
 		}
+
 		function transform(d) {
 			return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
 		}
@@ -386,24 +433,23 @@ function drawOriginalCorrelogram() {
 		.attr('width', width)
 		.attr('height', height)
 		.append('g')
-		.attr('transform', 'translate(' + padding.left +',' + padding.top + ')');
-
+		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')');
 
 
 	d3.json("json/cars_original_correlation.json", function (error, data) {
 		if (error) {
 			throw error;
 		}
-		// console.log(data);
-		var domain = d3.set(data.map(function(d) {
-				return d.row
-			})).values();
+		console.log(data);
+		var domain = d3.set(data.map(function (d) {
+			return d.row
+		})).values();
 
 		var num = Math.sqrt(data.length);
 
-		var	color = d3.scale.linear()
-				.domain([-1, 0, 1])
-				.range(["#B22222", "#fff", "#000080"]);
+		var color = d3.scale.linear()
+			.domain([-1, 0, 1])
+			.range(["#B22222", "#fff", "#000080"]);
 
 		var x = d3.scale
 				.ordinal()
@@ -423,7 +469,7 @@ function drawOriginalCorrelogram() {
 			.enter()
 			.append("g")
 			.attr("class", "cor")
-			.attr("transform", function(d) {
+			.attr("transform", function (d) {
 				return "translate(" + x(d.row) + "," + y(d.column) + ")";
 			});
 		//
@@ -434,10 +480,10 @@ function drawOriginalCorrelogram() {
 			.attr("x", -xSpace / 2)
 			.attr("y", -ySpace / 2);
 
-		cor.filter(function(d){
+		cor.filter(function (d) {
 			var ypos = domain.indexOf(d.column);
 			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++){
+			for (var i = (ypos + 1); i < num; i++) {
 				if (i === xpos || d.p > sigLevel) return false;
 			}
 			return true;
@@ -445,7 +491,7 @@ function drawOriginalCorrelogram() {
 			.append("text")
 			// .attr("x", -5)
 			.attr("y", 5)
-			.text(function(d) {
+			.text(function (d) {
 				if (d.p > sigLevel) {
 					return "";
 				} else if (d.row === d.column) {
@@ -454,7 +500,7 @@ function drawOriginalCorrelogram() {
 					return d.r.toFixed(2);
 				}
 			})
-			.style("fill", function(d){
+			.style("fill", function (d) {
 				if (d.r === 1) {
 					return "#000";
 				} else {
@@ -462,23 +508,23 @@ function drawOriginalCorrelogram() {
 				}
 			});
 
-		cor.filter(function(d){
+		cor.filter(function (d) {
 			var ypos = domain.indexOf(d.column);
 			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++){
+			for (var i = (ypos + 1); i < num; i++) {
 				if (i === xpos || d.p > sigLevel) return true;
 			}
 			return false;
 		})
 			.append("circle")
-			.attr("r", function(d){
+			.attr("r", function (d) {
 				if (d.p > sigLevel) {
 					return "";
 				} else {
 					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
 				}
 			})
-			.style("fill", function(d){
+			.style("fill", function (d) {
 				if (d.r === 1) {
 					return "#000";
 				} else {
@@ -504,9 +550,9 @@ function drawOriginalCorrelogram() {
 
 		var iR = d3.range(-1, 1.01, 0.01);
 		var h = plotAreaHeight / iR.length + 3;
-		iR.forEach(function(d){
+		iR.forEach(function (d) {
 			aG.append('rect')
-				.style('fill',color(d))
+				.style('fill', color(d))
 				.style('stroke-width', 0)
 				.style('stoke', 'none')
 				.attr('height', h)
@@ -531,6 +577,7 @@ function drawUncertaintyCorrelogram() {
 		left: 50
 	};
 	const sigLevel = 0.05;
+	const sortedNames = ["displacement", "timeTo60mph", "economy", "weight", "power", "year", "cylinder"];
 
 	// inner chart dimensions, where the dots are plotted
 	const plotAreaWidth = width - padding.left - padding.right;
@@ -541,8 +588,7 @@ function drawUncertaintyCorrelogram() {
 		.attr('width', width)
 		.attr('height', height)
 		.append('g')
-		.attr('transform', 'translate(' + padding.left +',' + padding.top + ')');
-
+		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')');
 
 
 	d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
@@ -550,13 +596,14 @@ function drawUncertaintyCorrelogram() {
 			throw error;
 		}
 		// console.log(data);
-		var domain = d3.set(data.map(function(d) {
+
+		var domain = d3.set(data.map(function (d) {
 			return d.row
 		})).values();
 
 		var num = Math.sqrt(data.length);
 
-		var	color = d3.scale.linear()
+		var color = d3.scale.linear()
 			.domain([-1, 0, 1])
 			.range(["#B22222", "#fff", "#000080"]);
 
@@ -578,7 +625,7 @@ function drawUncertaintyCorrelogram() {
 			.enter()
 			.append("g")
 			.attr("class", "cor")
-			.attr("transform", function(d) {
+			.attr("transform", function (d) {
 				return "translate(" + x(d.row) + "," + y(d.column) + ")";
 			});
 		// //
@@ -589,10 +636,10 @@ function drawUncertaintyCorrelogram() {
 			.attr("x", -xSpace / 2)
 			.attr("y", -ySpace / 2);
 
-		cor.filter(function(d){
+		cor.filter(function (d) {
 			var ypos = domain.indexOf(d.column);
 			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++){
+			for (var i = (ypos + 1); i < num; i++) {
 				if (i === xpos || d.p > sigLevel) return false;
 			}
 			return true;
@@ -600,7 +647,7 @@ function drawUncertaintyCorrelogram() {
 			.append("text")
 			// .attr("x", -5)
 			.attr("y", 5)
-			.text(function(d) {
+			.text(function (d) {
 				if (d.p > sigLevel) {
 					return "";
 				} else if (d.row === d.column) {
@@ -609,7 +656,7 @@ function drawUncertaintyCorrelogram() {
 					return d.r.toFixed(2);
 				}
 			})
-			.style("fill", function(d){
+			.style("fill", function (d) {
 				if (d.r === 1) {
 					return "#000";
 				} else {
@@ -617,23 +664,23 @@ function drawUncertaintyCorrelogram() {
 				}
 			});
 
-		cor.filter(function(d){
+		cor.filter(function (d) {
 			var ypos = domain.indexOf(d.column);
 			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++){
+			for (var i = (ypos + 1); i < num; i++) {
 				if (i === xpos) return true;
 			}
 			return false;
 		})
 			.append("circle")
-			.attr("r", function(d){
+			.attr("r", function (d) {
 				if (d.p > sigLevel) {
 					return "";
 				} else {
 					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
 				}
 			})
-			.style("fill", function(d){
+			.style("fill", function (d) {
 				if (d.r === 1) {
 					return "#000";
 				} else {
@@ -659,9 +706,9 @@ function drawUncertaintyCorrelogram() {
 
 		var iR = d3.range(-1, 1.01, 0.01);
 		var h = plotAreaHeight / iR.length + 3;
-		iR.forEach(function(d){
+		iR.forEach(function (d) {
 			aG.append('rect')
-				.style('fill',color(d))
+				.style('fill', color(d))
 				.style('stroke-width', 0)
 				.style('stoke', 'none')
 				.attr('height', h)
@@ -675,7 +722,7 @@ function drawUncertaintyCorrelogram() {
 function drawParallelCoordinates() {
 	const parallelCoordinates = d3.select("#parallelCoordinates-container");
 	const width = 1310,
-	    height = 550;
+		height = 550;
 
 	const padding = {top: 30, right: 10, bottom: 10, left: 10};
 	const plotAreaWidth = width - padding.left - padding.right;
@@ -905,38 +952,38 @@ function drawParallelCoordinates() {
 	});
 
 
-		function position(d) {
-			var v = dragging[d];
-			return v == null ? x(d) : v;
-		}
+	function position(d) {
+		var v = dragging[d];
+		return v == null ? x(d) : v;
+	}
 
-		function transition(g) {
-			return g.transition().duration(500);
-		}
+	function transition(g) {
+		return g.transition().duration(500);
+	}
 
 // Returns the path for a given data point.
-		function path(d) {
-			return line(dimensions.map(function (p) {
-				return [position(p), y[p](d[p])];
-			}));
-		}
+	function path(d) {
+		return line(dimensions.map(function (p) {
+			return [position(p), y[p](d[p])];
+		}));
+	}
 
-		function brushstart() {
-			d3.event.sourceEvent.stopPropagation();
-		}
+	function brushstart() {
+		d3.event.sourceEvent.stopPropagation();
+	}
 
 // Handles a brush event, toggling the display of foreground lines.
-		function brush() {
-			var actives = dimensions.filter(function (p) {
-					return !y[p].brush.empty();
-				}),
-				extents = actives.map(function (p) {
-					return y[p].brush.extent();
-				});
-			foreground.style("display", function (d) {
-				return actives.every(function (p, i) {
-					return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-				}) ? null : "none";
+	function brush() {
+		var actives = dimensions.filter(function (p) {
+				return !y[p].brush.empty();
+			}),
+			extents = actives.map(function (p) {
+				return y[p].brush.extent();
 			});
-		}
+		foreground.style("display", function (d) {
+			return actives.every(function (p, i) {
+				return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+			}) ? null : "none";
+		});
+	}
 }
