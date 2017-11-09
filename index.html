@@ -36,10 +36,20 @@
 			<option value="uncertainty">uncertainty</option>
 		</select>
 		<input type="button" id="axisChangeButton" value="show">
+		<input type="button" id="clearCount" value="clear">
 	</div>
 	<div id="dimensionScatter-container"></div>
 </div>
 <div id="rowDataScatter" class="myDivClass">
+	<div class="controlPanel">
+		<div>
+			<label for="xLabelForRowDataScatter">X:</label>
+			<input type="text" id="xLabelForRowDataScatter" class="inputLabel">
+			<label for="yLabelForRowDataScatter">Y:</label>
+			<input type="text" id="yLabelForRowDataScatter" class="inputLabel">
+			<button id="rowScatterChangeButton">show</button>
+		</div>
+	</div>
 	<div id="rowDataScatter-container"></div>
 </div>
 <div id="originalCorrelogram" class="myDivClass">

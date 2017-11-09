@@ -10,20 +10,49 @@ $(function () {
 
 });
 
-drawDimensionScatter();
 
-drawRowDataScatter();
+d3.json("json/cars_summary.json", function (error, data) {
+	drawDimensionScatter(data);
 
-drawOriginalCorrelogram();
+});
 
-drawUncertaintyCorrelogram();
+d3.json("json/cars.json", function (error, data) {
+	drawRowDataScatter(data);
+});
 
-drawParallelCoordinates();
+d3.json("json/cars_original_correlation.json", function (error, data) {
+	drawOriginalCorrelogram(data);
+});
+d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
+	drawUncertaintyCorrelogram(data);
+});
+d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
+	drawParallelCoordinates(data);
+});
+
+// d3.json("json/Boston_summary.json", function (error, data) {
+// 	drawDimensionScatter(data);
+// });
+//
+// d3.json("json/Boston.json", function (error, data) {
+// 	drawRowDataScatter(data);
+// });
+//
+// d3.json("json/Boston_original_correlation.json", function (error, data) {
+// 	drawOriginalCorrelogram(data);
+// });
+// d3.json("json/Boston_uncertainty_correlation.json", function (error, data) {
+// 	drawUncertaintyCorrelogram(data);
+// });
+// d3.json("json/Boston_original_with_uncertainty.json", function (error, data) {
+// 	drawParallelCoordinates(data);
+// });
+
 
 /**
  * 画维度散点图
  */
-function drawDimensionScatter() {
+function drawDimensionScatter(data) {
 	//画散点图
 	const container = d3.select("#dimensionScatter-container");
 	const width = 650;
@@ -34,205 +63,239 @@ function drawDimensionScatter() {
 		bottom: 30,
 		left: 40
 	};
+	var clickDotNames = 0;
 // inner chart dimensions, where the dots are plotted
 	const plotAreaWidth = width - padding.left - padding.right;
 	const plotAreaHeight = height - padding.top - padding.bottom;
 
 	var xCat = "mean",
-		yCat = "sd";
+		yCat = "sd",
+		rCat = "uncertainty";
 
 
 //初始化比例尺
+// 	var xScale = d3.scale.log().range([0, plotAreaWidth]).nice();
+// 	var yScale = d3.scale.log().range([plotAreaHeight, 0]).nice();
 	var xScale = d3.scale.linear().range([0, plotAreaWidth]).nice();
 	var yScale = d3.scale.linear().range([plotAreaHeight, 0]).nice();
+	var rScale = d3.scale.linear().range([8, 20]);
 
 
-	d3.json("json/cars_summary.json", function (error, data) {
-		if (error) {
-			throw error;
+	// d3.json("json/cars_summary.json", function (error, data) {
+	// 	if (error) {
+	// 		throw error;
+	// 	}
+	// 	console.log(data);
+
+	var xMax = d3.max(data, function (d) {
+			return d[xCat];
+		}) / 3,
+		xMin = d3.min(data, function (d) {
+			return d[xCat];
+		}),
+		xMin = xMin > 0 ? 0 : xMin,
+		yMax = d3.max(data, function (d) {
+			return d[yCat];
+		}) / 3,
+		yMin = d3.min(data, function (d) {
+			return d[yCat];
+		}),
+		yMin = yMin > 0 ? 0 : yMin;
+
+	xScale.domain([xMin, xMax]);
+	yScale.domain([yMin, yMax]);
+	rScale.domain(d3.extent(data, function (d) {
+		return d[rCat];
+	}));
+
+	var xAxis = d3.svg.axis()
+		.scale(xScale)
+		.orient("bottom")
+		.tickSize(-plotAreaHeight);
+
+	var yAxis = d3.svg.axis()
+		.scale(yScale)
+		.orient("left")
+		.tickSize(-plotAreaWidth);
+
+	var tip = d3.tip()
+		.attr("class", "d3-tip")
+		.offset([-10, 0])
+		.html(function (d) {
+			return "<h2>" + d["_row"] + "</h2>"
+				+ "mean" + ": " + d["mean"] + "<br>"
+				+ "sd" + ": " + d["sd"] + "<br>"
+				+ "median" + ": " + d["median"] + "<br>"
+				+ "min" + ": " + d["min"] + "<br>"
+				+ "max" + ": " + d["max"] + "<br>"
+				+ "uncertainty" + ": " + d["uncertainty"] + "<br>";
+		});
+
+	var zoomBeh = d3.behavior.zoom()
+		.x(xScale)
+		.y(yScale)
+		.scaleExtent([0, 500])
+		.on("zoom", zoom);
+
+	var svg = container.append('svg')
+		.attr("id", "dimensionScatterSvg")
+		.attr('width', width)
+		.attr('height', height)
+		.append('g')
+		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
+		.call(zoomBeh);
+
+	svg.call(tip);
+
+	svg.append("rect")
+		.attr("class", "scatterRect")
+		.attr("width", plotAreaWidth)
+		.attr("height", plotAreaHeight);
+
+	//画数轴
+	svg.append("g")
+		.classed("x axis", true)
+		.attr("transform", "translate(0," + plotAreaHeight + ")")
+		.call(xAxis)
+		.append("text")
+		.classed("label", true)
+		.attr("x", plotAreaWidth)
+		.attr("y", padding.bottom - 10)
+		.style("text-anchor", "end")
+		.text(xCat);
+
+	svg.append("g")
+		.classed("y axis", true)
+		.call(yAxis)
+		.append("text")
+		.classed("label", true)
+		.attr("transform", "rotate(-90)")
+		.attr("y", -padding.left)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text(yCat);
+
+	var objects = svg.append("svg")
+		.classed("objects", true)
+		.attr("width", plotAreaWidth)
+		.attr("height", plotAreaHeight);
+
+	objects.append("svg:line")
+		.classed("axisLine hAxisLine", true)
+		.attr("x1", 0)
+		.attr("y1", 0)
+		.attr("x2", plotAreaWidth)
+		.attr("y2", 0)
+		.attr("transform", "translate(0," + plotAreaHeight + ")");
+
+	objects.append("svg:line")
+		.classed("axisLine vAxisLine", true)
+		.attr("x1", 0)
+		.attr("y1", 0)
+		.attr("x2", 0)
+		.attr("y2", plotAreaHeight);
+
+	//画散点图
+	var dot = objects.selectAll(".dot")
+		.data(data)
+		.enter().append("circle")
+		.classed("dot", true)
+		// .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
+		.attr("r", function (d) {
+			return rScale(d[rCat]);
+		})
+		.attr("transform", transform)
+		// .style("fill", function(d) { return color(d[colorCat]); })
+		.style("fill", "blue")
+		.on("mouseover", tip.show)
+		.on("mouseout", tip.hide)
+		.on("click", function (d) {
+			clickDot(d)
+		});
+	// for (var i = 0; i < dot.length; i++) {
+	// 	dot[i].onclick = function (d) {
+	// 		console.log(d)
+	// 			clickDot(d)
+	// 		};
+	// 	console.log(dot[i]);
+	// }
+
+	// console.log(dot);
+	/**
+	 * 设置button动作
+	 */
+	d3.select("#axisChangeButton").on("click", change);
+	d3.select("#clearCount").on("click", clearCount);
+
+	function change() {
+		xCat = $("#xAxisForDimensionScatter").val();
+		yCat = $("#yAxisForDimensionScatter").val();
+
+		xMax = d3.max(data, function (d) {
+			return d[xCat];
+		});
+		xMin = d3.min(data, function (d) {
+			return d[xCat];
+		});
+
+		yMax = d3.max(data, function (d) {
+			return d[yCat];
+		});
+		yMin = d3.min(data, function (d) {
+			return d[yCat];
+		});
+
+		zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
+
+		var svg = container.transition();
+
+		svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
+		svg.select(".y.axis").duration(750).call(yAxis).select(".label").text(yCat);
+
+		objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
+	}
+
+	function clearCount() {
+		clickDotNames = 0;
+	}
+
+	function zoom() {
+		svg.select(".x.axis").call(xAxis);
+		svg.select(".y.axis").call(yAxis);
+
+		svg.selectAll(".dot")
+			.attr("transform", transform);
+	}
+
+	function transform(d) {
+		return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
+	}
+
+	function clickDot(d) {
+		var x = d3.select(this).style();
+		var y = $(this);
+		console.log(y);
+		if (clickDotNames === 0) {
+
+			$("#xLabelForRowDataScatter").val(d["_row"]);
+			console.log(clickDotNames);
 		}
-		console.log(data);
-
-		var xMax = d3.max(data, function (d) {
-				return d[xCat];
-			}) * 1.05,
-			xMin = d3.min(data, function (d) {
-				return d[xCat];
-			}),
-			xMin = xMin > 0 ? 0 : xMin,
-			yMax = d3.max(data, function (d) {
-				return d[yCat];
-			}) * 1.05,
-			yMin = d3.min(data, function (d) {
-				return d[yCat];
-			}),
-			yMin = yMin > 0 ? 0 : yMin;
-
-		xScale.domain([xMin, xMax]);
-		yScale.domain([yMin, yMax]);
-
-		var xAxis = d3.svg.axis()
-			.scale(xScale)
-			.orient("bottom")
-			.tickSize(-plotAreaHeight);
-
-		var yAxis = d3.svg.axis()
-			.scale(yScale)
-			.orient("left")
-			.tickSize(-plotAreaWidth);
-
-		var tip = d3.tip()
-			.attr("class", "d3-tip")
-			.offset([-10, 0])
-			.html(function (d) {
-				return "<h2>" + d["_row"] + "</h2>"
-					+ "mean" + ": " + d["mean"] + "<br>"
-					+ "sd" + ": " + d["sd"] + "<br>"
-					+ "median" + ": " + d["median"] + "<br>"
-					+ "min" + ": " + d["min"] + "<br>"
-					+ "max" + ": " + d["max"] + "<br>"
-					+ "uncertainty" + ": " + d["uncertainty"] + "<br>";
-			});
-
-		var zoomBeh = d3.behavior.zoom()
-			.x(xScale)
-			.y(yScale)
-			.scaleExtent([0, 500])
-			.on("zoom", zoom);
-
-		var svg = container.append('svg')
-			.attr("id", "dimensionScatterSvg")
-			.attr('width', width)
-			.attr('height', height)
-			.append('g')
-			.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
-			.call(zoomBeh);
-
-		svg.call(tip);
-
-		svg.append("rect")
-			.attr("class", "scatterRect")
-			.attr("width", plotAreaWidth)
-			.attr("height", plotAreaHeight);
-
-		//画数轴
-		svg.append("g")
-			.classed("x axis", true)
-			.attr("transform", "translate(0," + plotAreaHeight + ")")
-			.call(xAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("x", plotAreaWidth)
-			.attr("y", padding.bottom - 10)
-			.style("text-anchor", "end")
-			.text(xCat);
-
-		svg.append("g")
-			.classed("y axis", true)
-			.call(yAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("transform", "rotate(-90)")
-			.attr("y", -padding.left)
-			.attr("dy", ".71em")
-			.style("text-anchor", "end")
-			.text(yCat);
-
-		var objects = svg.append("svg")
-			.classed("objects", true)
-			.attr("width", plotAreaWidth)
-			.attr("height", plotAreaHeight);
-
-		objects.append("svg:line")
-			.classed("axisLine hAxisLine", true)
-			.attr("x1", 0)
-			.attr("y1", 0)
-			.attr("x2", plotAreaWidth)
-			.attr("y2", 0)
-			.attr("transform", "translate(0," + plotAreaHeight + ")");
-
-		objects.append("svg:line")
-			.classed("axisLine vAxisLine", true)
-			.attr("x1", 0)
-			.attr("y1", 0)
-			.attr("x2", 0)
-			.attr("y2", plotAreaHeight);
-
-		//画散点图
-		objects.selectAll(".dot")
-			.data(data)
-			.enter().append("circle")
-			.classed("dot", true)
-			// .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
-			.attr("r", 10)
-			.attr("transform", transform)
-			// .style("fill", function(d) { return color(d[colorCat]); })
-			.style("fill", "blue")
-			.on("mouseover", tip.show)
-			.on("mouseout", tip.hide)
-			.on("click", function (d) {
-				clickDot(d)
-			});
-
-		/**
-		 * 设置button动作
-		 */
-		d3.select("#axisChangeButton").on("click", change);
-
-		function change() {
-			xCat = $("#xAxisForDimensionScatter").val();
-			yCat = $("#yAxisForDimensionScatter").val();
-
-			xMax = d3.max(data, function (d) {
-				return d[xCat];
-			});
-			xMin = d3.min(data, function (d) {
-				return d[xCat];
-			});
-
-			yMax = d3.max(data, function (d) {
-				return d[yCat];
-			});
-			yMin = d3.min(data, function (d) {
-				return d[yCat];
-			});
-
-			zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
-
-			var svg = container.transition();
-
-			svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
-			svg.select(".y.axis").duration(750).call(yAxis).select(".label").text(yCat);
-
-			objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
+		if (clickDotNames === 1) {
+			$("#yLabelForRowDataScatter").val(d["_row"]);
+			console.log(clickDotNames);
 		}
+		clickDotNames++;
+		console.log(d["_row"]);
 
-		function zoom() {
-			svg.select(".x.axis").call(xAxis);
-			svg.select(".y.axis").call(yAxis);
+	}
 
-			svg.selectAll(".dot")
-				.attr("transform", transform);
-		}
-
-		function transform(d) {
-			return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
-		}
-
-		function clickDot(d) {
-			// d3.select(this).style("fill", "white");
-			console.log(d["_row"]);
-			// console.log(this);
-
-
-		}
-	});
+	// });
 }
 
 /**
  * 原数据散点图
  */
-function drawRowDataScatter() {
+function drawRowDataScatter(data) {
 	const rowDataScatterContainer = d3.select("#rowDataScatter");
 
 	const width = 650;
@@ -248,171 +311,187 @@ function drawRowDataScatter() {
 	const plotAreaWidth = width - padding.left - padding.right;
 	const plotAreaHeight = height - padding.top - padding.bottom;
 
-	var xCat = "economy",
-		yCat = "displacement";
+	var names = Object.keys(data[0]);
+	console.log(names);
+	var xCat = names[0],
+		yCat = names[1];
+
+	$("#xLabelForRowDataScatter").val(xCat);
+	$("#yLabelForRowDataScatter").val(yCat);
 
 //初始化比例尺
 	var xScale = d3.scale.linear().range([0, plotAreaWidth]).nice();
 	var yScale = d3.scale.linear().range([plotAreaHeight, 0]).nice();
 
-	d3.json("json/cars.json", function (error, data) {
-		if (error) {
-			throw error;
-		}
-		// console.log(data);
+	// d3.json("json/cars.json", function (error, data) {
+	// 	if (error) {
+	// 		throw error;
+	// 	}
+	// console.log(data);
 
-		var xMax = d3.max(data, function (d) {
-				return d[xCat];
-			}) * 1.05,
-			xMin = d3.min(data, function (d) {
-				return d[xCat];
-			}),
-			xMin = xMin > 0 ? 0 : xMin,
-			yMax = d3.max(data, function (d) {
-				return d[yCat];
-			}) * 1.05,
-			yMin = d3.min(data, function (d) {
-				return d[yCat];
-			}),
-			yMin = yMin > 0 ? 0 : yMin;
+	var xMax = d3.max(data, function (d) {
+			return d[xCat];
+		}) * 1.05,
+		xMin = d3.min(data, function (d) {
+			return d[xCat];
+		}),
+		xMin = xMin > 0 ? 0 : xMin,
+		yMax = d3.max(data, function (d) {
+			return d[yCat];
+		}) * 1.05,
+		yMin = d3.min(data, function (d) {
+			return d[yCat];
+		}),
+		yMin = yMin > 0 ? 0 : yMin;
 
-		xScale.domain([xMin, xMax]);
-		yScale.domain([yMin, yMax]);
+	xScale.domain([xMin, xMax]);
+	yScale.domain([yMin, yMax]);
 
-		var xAxis = d3.svg.axis()
-			.scale(xScale)
-			.orient("bottom")
-			.tickSize(-plotAreaHeight);
+	var xAxis = d3.svg.axis()
+		.scale(xScale)
+		.orient("bottom")
+		.tickSize(-plotAreaHeight);
 
-		var yAxis = d3.svg.axis()
-			.scale(yScale)
-			.orient("left")
-			.tickSize(-plotAreaWidth);
+	var yAxis = d3.svg.axis()
+		.scale(yScale)
+		.orient("left")
+		.tickSize(-plotAreaWidth);
 
-		var tip = d3.tip()
-			.attr("class", "d3-tip")
-			.offset([-10, 0])
-			.html(function (d) {
-				return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
-			});
+	var tip = d3.tip()
+		.attr("class", "d3-tip")
+		.offset([-10, 0])
+		.html(function (d) {
+			return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
+		});
 
-		var zoomBeh = d3.behavior.zoom()
-			.x(xScale)
-			.y(yScale)
-			.scaleExtent([0, 500])
-			.on("zoom", zoom);
+	var zoomBeh = d3.behavior.zoom()
+		.x(xScale)
+		.y(yScale)
+		.scaleExtent([0, 500])
+		.on("zoom", zoom);
 
-		var svg = rowDataScatterContainer.append('svg')
-			.attr('width', width)
-			.attr('height', height)
-			.append('g')
-			.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
-			.call(zoomBeh);
+	var svg = rowDataScatterContainer.append('svg')
+		.attr('width', width)
+		.attr('height', height)
+		.append('g')
+		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')')
+		.call(zoomBeh);
 
-		svg.call(tip);
+	svg.call(tip);
 
-		svg.append("rect")
-			.attr("class", "scatterRect")
-			.attr("width", plotAreaWidth)
-			.attr("height", plotAreaHeight);
+	svg.append("rect")
+		.attr("class", "scatterRect")
+		.attr("width", plotAreaWidth)
+		.attr("height", plotAreaHeight);
 
-		//画数轴
-		svg.append("g")
-			.classed("x axis", true)
-			.attr("transform", "translate(0," + plotAreaHeight + ")")
-			.call(xAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("x", plotAreaWidth)
-			.attr("y", padding.bottom - 10)
-			.style("text-anchor", "end")
-			.text(xCat);
+	//画数轴
+	svg.append("g")
+		.classed("xForRowData axis", true)
+		.attr("transform", "translate(0," + plotAreaHeight + ")")
+		.call(xAxis)
+		.append("text")
+		.classed("label", true)
+		.attr("x", plotAreaWidth)
+		.attr("y", padding.bottom - 10)
+		.style("text-anchor", "end")
+		.text(xCat);
 
-		svg.append("g")
-			.classed("y axis", true)
-			.call(yAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("transform", "rotate(-90)")
-			.attr("y", -padding.left)
-			.attr("dy", ".71em")
-			.style("text-anchor", "end")
-			.text(yCat);
+	svg.append("g")
+		.classed("yForRowData axis", true)
+		.call(yAxis)
+		.append("text")
+		.classed("label", true)
+		.attr("transform", "rotate(-90)")
+		.attr("y", -padding.left)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text(yCat);
 
-		var objects = svg.append("svg")
-			.classed("objects", true)
-			.attr("width", plotAreaWidth)
-			.attr("height", plotAreaHeight);
+	var objects = svg.append("svg")
+		.classed("objects", true)
+		.attr("width", plotAreaWidth)
+		.attr("height", plotAreaHeight);
 
-		objects.append("svg:line")
-			.classed("axisLine hAxisLine", true)
-			.attr("x1", 0)
-			.attr("y1", 0)
-			.attr("x2", plotAreaWidth)
-			.attr("y2", 0)
-			.attr("transform", "translate(0," + plotAreaHeight + ")");
+	objects.append("svg:line")
+		.classed("axisLine hAxisLine", true)
+		.attr("x1", 0)
+		.attr("y1", 0)
+		.attr("x2", plotAreaWidth)
+		.attr("y2", 0)
+		.attr("transform", "translate(0," + plotAreaHeight + ")");
 
-		objects.append("svg:line")
-			.classed("axisLine vAxisLine", true)
-			.attr("x1", 0)
-			.attr("y1", 0)
-			.attr("x2", 0)
-			.attr("y2", plotAreaHeight);
+	objects.append("svg:line")
+		.classed("axisLine vAxisLine", true)
+		.attr("x1", 0)
+		.attr("y1", 0)
+		.attr("x2", 0)
+		.attr("y2", plotAreaHeight);
 
-		//画散点图
-		objects.selectAll(".dot")
-			.data(data)
-			.enter().append("circle")
-			.classed("dot", true)
-			// .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
-			.attr("r", 5)
-			.attr("transform", transform)
-			// .style("fill", function(d) { return color(d[colorCat]); })
-			.style("fill", "blue")
-			.on("mouseover", tip.show)
-			.on("mouseout", tip.hide);
+	//画散点图
+	objects.selectAll(".dot")
+		.data(data)
+		.enter().append("circle")
+		.classed("dot", true)
+		// .attr("r", function (d) { return 6 * Math.sqrt(d[rCat] / Math.PI); })
+		.attr("r", 5)
+		.attr("transform", transform)
+		// .style("fill", function(d) { return color(d[colorCat]); })
+		.style("fill", "blue")
+		.on("mouseover", tip.show)
+		.on("mouseout", tip.hide);
 
-		/**
-		 * 设置button动作
-		 */
-		// d3.select("#axisChangeButton").on("click", change);
+	/**
+	 * 设置button动作
+	 */
+	d3.select("#rowScatterChangeButton").on("click", change);
 
-		function change() {
-			xCat = "median";
-			xMax = d3.max(data, function (d) {
-				return d[xCat];
-			});
-			xMin = d3.min(data, function (d) {
-				return d[xCat];
-			});
+	function change() {
+		xCat = $("#xLabelForRowDataScatter").val();
+		yCat = $("#yLabelForRowDataScatter").val();
 
-			zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
+		xMax = d3.max(data, function (d) {
+			return d[xCat];
+		});
+		xMin = d3.min(data, function (d) {
+			return d[xCat];
+		});
 
-			var svg = rowDataScatterContainer.transition();
+		yMax = d3.max(data, function (d) {
+			return d[yCat];
+		});
+		yMin = d3.min(data, function (d) {
+			return d[yCat];
+		});
 
-			svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
+		zoomBeh.x(xScale.domain([xMin, xMax])).y(yScale.domain([yMin, yMax]));
 
-			objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
-		}
+		var svg = rowDataScatterContainer.transition();
 
-		function zoom() {
-			svg.select(".x.axis").call(xAxis);
-			svg.select(".y.axis").call(yAxis);
+		svg.select(".xForRowData.axis").duration(750).call(xAxis).select(".label").text(xCat);
+		svg.select(".yForRowData.axis").duration(750).call(yAxis).select(".label").text(yCat);
 
-			svg.selectAll(".dot")
-				.attr("transform", transform);
-		}
+		objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
+	}
 
-		function transform(d) {
-			return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
-		}
-	});
+	function zoom() {
+		svg.select(".x.axis").call(xAxis);
+		svg.select(".y.axis").call(yAxis);
+
+		svg.selectAll(".dot")
+			.attr("transform", transform);
+	}
+
+	function transform(d) {
+		return "translate(" + xScale(d[xCat]) + "," + yScale(d[yCat]) + ")";
+	}
+
+	// });
 }
 
 /**
  * 原数据相关图
  */
-function drawOriginalCorrelogram() {
+function drawOriginalCorrelogram(data) {
 	const originalCorrelogramContainer = d3.select("#originalCorrelogram-container");
 	const width = 600;
 	const height = 500;
@@ -436,137 +515,137 @@ function drawOriginalCorrelogram() {
 		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')');
 
 
-	d3.json("json/cars_original_correlation.json", function (error, data) {
-		if (error) {
-			throw error;
-		}
-		console.log(data);
-		var domain = d3.set(data.map(function (d) {
-			return d.row
-		})).values();
+	// d3.json("json/cars_original_correlation.json", function (error, data) {
+	// 	if (error) {
+	// 		throw error;
+	// 	}
+	// 	console.log(data);
+	var domain = d3.set(data.map(function (d) {
+		return d.row
+	})).values();
 
-		var num = Math.sqrt(data.length);
+	var num = Math.sqrt(data.length);
 
-		var color = d3.scale.linear()
-			.domain([-1, 0, 1])
-			.range(["#B22222", "#fff", "#000080"]);
+	var color = d3.scale.linear()
+		.domain([-1, 0, 1])
+		.range(["#B22222", "#fff", "#000080"]);
 
-		var x = d3.scale
-				.ordinal()
-				.rangePoints([0, plotAreaWidth])
-				.domain(domain),
-			y = d3.scale
-				.ordinal()
-				.rangePoints([0, plotAreaHeight])
-				.domain(domain),
+	var x = d3.scale
+			.ordinal()
+			.rangePoints([0, plotAreaWidth])
+			.domain(domain),
+		y = d3.scale
+			.ordinal()
+			.rangePoints([0, plotAreaHeight])
+			.domain(domain),
 
 
-			xSpace = x.range()[1] - x.range()[0],
-			ySpace = y.range()[1] - y.range()[0];
+		xSpace = x.range()[1] - x.range()[0],
+		ySpace = y.range()[1] - y.range()[0];
 
-		var cor = svg.selectAll(".cor")
-			.data(data)
-			.enter()
-			.append("g")
-			.attr("class", "cor")
-			.attr("transform", function (d) {
-				return "translate(" + x(d.row) + "," + y(d.column) + ")";
-			});
-		//
-		cor.append("rect")
-			.attr("width", xSpace)
-			.attr("height", ySpace)
-			.attr("class", "correlationRect")
-			.attr("x", -xSpace / 2)
-			.attr("y", -ySpace / 2);
-
-		cor.filter(function (d) {
-			var ypos = domain.indexOf(d.column);
-			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++) {
-				if (i === xpos || d.p > sigLevel) return false;
-			}
-			return true;
-		})
-			.append("text")
-			// .attr("x", -5)
-			.attr("y", 5)
-			.text(function (d) {
-				if (d.p > sigLevel) {
-					return "";
-				} else if (d.row === d.column) {
-					return d.row;
-				} else {
-					return d.r.toFixed(2);
-				}
-			})
-			.style("fill", function (d) {
-				if (d.r === 1) {
-					return "#000";
-				} else {
-					return color(d.r);
-				}
-			});
-
-		cor.filter(function (d) {
-			var ypos = domain.indexOf(d.column);
-			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++) {
-				if (i === xpos || d.p > sigLevel) return true;
-			}
-			return false;
-		})
-			.append("circle")
-			.attr("r", function (d) {
-				if (d.p > sigLevel) {
-					return "";
-				} else {
-					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
-				}
-			})
-			.style("fill", function (d) {
-				if (d.r === 1) {
-					return "#000";
-				} else {
-					return color(d.r);
-				}
-			});
-
-		//legend
-		var aS = d3.scale
-			.linear()
-			.range([-padding.top + 15, plotAreaHeight + padding.bottom - 10])
-			.domain([1, -1]);
-
-		var yA = d3.svg.axis()
-			.orient("right")
-			.scale(aS)
-			.tickPadding(7);
-
-		var aG = svg.append("g")
-			.attr("class", "y axis")
-			.call(yA)
-			.attr("transform", "translate(" + (plotAreaWidth + padding.right / 2) + " ,0)");
-
-		var iR = d3.range(-1, 1.01, 0.01);
-		var h = plotAreaHeight / iR.length + 3;
-		iR.forEach(function (d) {
-			aG.append('rect')
-				.style('fill', color(d))
-				.style('stroke-width', 0)
-				.style('stoke', 'none')
-				.attr('height', h)
-				.attr('width', 10)
-				.attr('x', 0)
-				.attr('y', aS(d))
+	var cor = svg.selectAll(".cor")
+		.data(data)
+		.enter()
+		.append("g")
+		.attr("class", "cor")
+		.attr("transform", function (d) {
+			return "translate(" + x(d.row) + "," + y(d.column) + ")";
 		});
+	//
+	cor.append("rect")
+		.attr("width", xSpace)
+		.attr("height", ySpace)
+		.attr("class", "correlationRect")
+		.attr("x", -xSpace / 2)
+		.attr("y", -ySpace / 2);
+
+	cor.filter(function (d) {
+		var ypos = domain.indexOf(d.column);
+		var xpos = domain.indexOf(d.row);
+		for (var i = (ypos + 1); i < num; i++) {
+			if (i === xpos || d.p > sigLevel) return false;
+		}
+		return true;
+	})
+		.append("text")
+		// .attr("x", -5)
+		.attr("y", 5)
+		.text(function (d) {
+			if (d.p > sigLevel) {
+				return "";
+			} else if (d.row === d.column) {
+				return d.row;
+			} else {
+				return d.r.toFixed(2);
+			}
+		})
+		.style("fill", function (d) {
+			if (d.r === 1) {
+				return "#000";
+			} else {
+				return color(d.r);
+			}
+		});
+
+	cor.filter(function (d) {
+		var ypos = domain.indexOf(d.column);
+		var xpos = domain.indexOf(d.row);
+		for (var i = (ypos + 1); i < num; i++) {
+			if (i === xpos || d.p > sigLevel) return true;
+		}
+		return false;
+	})
+		.append("circle")
+		.attr("r", function (d) {
+			if (d.p > sigLevel) {
+				return "";
+			} else {
+				return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
+			}
+		})
+		.style("fill", function (d) {
+			if (d.r === 1) {
+				return "#000";
+			} else {
+				return color(d.r);
+			}
+		});
+
+	//legend
+	var aS = d3.scale
+		.linear()
+		.range([-padding.top + 15, plotAreaHeight + padding.bottom - 10])
+		.domain([1, -1]);
+
+	var yA = d3.svg.axis()
+		.orient("right")
+		.scale(aS)
+		.tickPadding(7);
+
+	var aG = svg.append("g")
+		.attr("class", "y axis")
+		.call(yA)
+		.attr("transform", "translate(" + (plotAreaWidth + padding.right / 2) + " ,0)");
+
+	var iR = d3.range(-1, 1.01, 0.01);
+	var h = plotAreaHeight / iR.length + 3;
+	iR.forEach(function (d) {
+		aG.append('rect')
+			.style('fill', color(d))
+			.style('stroke-width', 0)
+			.style('stoke', 'none')
+			.attr('height', h)
+			.attr('width', 10)
+			.attr('x', 0)
+			.attr('y', aS(d))
 	});
+	// });
 }
 
 /**
  * 不确定性数据相关图
  */
-function drawUncertaintyCorrelogram() {
+function drawUncertaintyCorrelogram(data) {
 	const uncertaintyCorrelogramContainer = d3.select("#uncertaintyCorrelogram-container");
 	const width = 600;
 	const height = 500;
@@ -577,7 +656,6 @@ function drawUncertaintyCorrelogram() {
 		left: 50
 	};
 	const sigLevel = 0.05;
-	const sortedNames = ["displacement", "timeTo60mph", "economy", "weight", "power", "year", "cylinder"];
 
 	// inner chart dimensions, where the dots are plotted
 	const plotAreaWidth = width - padding.left - padding.right;
@@ -591,135 +669,135 @@ function drawUncertaintyCorrelogram() {
 		.attr('transform', 'translate(' + padding.left + ',' + padding.top + ')');
 
 
-	d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
-		if (error) {
-			throw error;
-		}
-		// console.log(data);
+	// d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
+	// 	if (error) {
+	// 		throw error;
+	// 	}
+	// console.log(data);
 
-		var domain = d3.set(data.map(function (d) {
-			return d.row
-		})).values();
+	var domain = d3.set(data.map(function (d) {
+		return d.row
+	})).values();
 
-		var num = Math.sqrt(data.length);
+	var num = Math.sqrt(data.length);
 
-		var color = d3.scale.linear()
-			.domain([-1, 0, 1])
-			.range(["#B22222", "#fff", "#000080"]);
+	var color = d3.scale.linear()
+		.domain([-1, 0, 1])
+		.range(["#B22222", "#fff", "#000080"]);
 
-		var x = d3.scale
-				.ordinal()
-				.rangePoints([0, plotAreaWidth])
-				.domain(domain),
-			y = d3.scale
-				.ordinal()
-				.rangePoints([0, plotAreaHeight])
-				.domain(domain),
+	var x = d3.scale
+			.ordinal()
+			.rangePoints([0, plotAreaWidth])
+			.domain(domain),
+		y = d3.scale
+			.ordinal()
+			.rangePoints([0, plotAreaHeight])
+			.domain(domain),
 
 
-			xSpace = x.range()[1] - x.range()[0],
-			ySpace = y.range()[1] - y.range()[0];
+		xSpace = x.range()[1] - x.range()[0],
+		ySpace = y.range()[1] - y.range()[0];
 
-		var cor = svg.selectAll(".cor")
-			.data(data)
-			.enter()
-			.append("g")
-			.attr("class", "cor")
-			.attr("transform", function (d) {
-				return "translate(" + x(d.row) + "," + y(d.column) + ")";
-			});
-		// //
-		cor.append("rect")
-			.attr("width", xSpace)
-			.attr("height", ySpace)
-			.attr("class", "correlationRect")
-			.attr("x", -xSpace / 2)
-			.attr("y", -ySpace / 2);
-
-		cor.filter(function (d) {
-			var ypos = domain.indexOf(d.column);
-			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++) {
-				if (i === xpos || d.p > sigLevel) return false;
-			}
-			return true;
-		})
-			.append("text")
-			// .attr("x", -5)
-			.attr("y", 5)
-			.text(function (d) {
-				if (d.p > sigLevel) {
-					return "";
-				} else if (d.row === d.column) {
-					return d.row;
-				} else {
-					return d.r.toFixed(2);
-				}
-			})
-			.style("fill", function (d) {
-				if (d.r === 1) {
-					return "#000";
-				} else {
-					return color(d.r);
-				}
-			});
-
-		cor.filter(function (d) {
-			var ypos = domain.indexOf(d.column);
-			var xpos = domain.indexOf(d.row);
-			for (var i = (ypos + 1); i < num; i++) {
-				if (i === xpos) return true;
-			}
-			return false;
-		})
-			.append("circle")
-			.attr("r", function (d) {
-				if (d.p > sigLevel) {
-					return "";
-				} else {
-					return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
-				}
-			})
-			.style("fill", function (d) {
-				if (d.r === 1) {
-					return "#000";
-				} else {
-					return color(d.r);
-				}
-			});
-
-		//legend
-		var aS = d3.scale
-			.linear()
-			.range([-padding.top + 15, plotAreaHeight + padding.bottom - 10])
-			.domain([1, -1]);
-
-		var yA = d3.svg.axis()
-			.orient("right")
-			.scale(aS)
-			.tickPadding(7);
-
-		var aG = svg.append("g")
-			.attr("class", "y axis")
-			.call(yA)
-			.attr("transform", "translate(" + (plotAreaWidth + padding.right / 2) + " ,0)");
-
-		var iR = d3.range(-1, 1.01, 0.01);
-		var h = plotAreaHeight / iR.length + 3;
-		iR.forEach(function (d) {
-			aG.append('rect')
-				.style('fill', color(d))
-				.style('stroke-width', 0)
-				.style('stoke', 'none')
-				.attr('height', h)
-				.attr('width', 10)
-				.attr('x', 0)
-				.attr('y', aS(d))
+	var cor = svg.selectAll(".cor")
+		.data(data)
+		.enter()
+		.append("g")
+		.attr("class", "cor")
+		.attr("transform", function (d) {
+			return "translate(" + x(d.row) + "," + y(d.column) + ")";
 		});
+	// //
+	cor.append("rect")
+		.attr("width", xSpace)
+		.attr("height", ySpace)
+		.attr("class", "correlationRect")
+		.attr("x", -xSpace / 2)
+		.attr("y", -ySpace / 2);
+
+	cor.filter(function (d) {
+		var ypos = domain.indexOf(d.column);
+		var xpos = domain.indexOf(d.row);
+		for (var i = (ypos + 1); i < num; i++) {
+			if (i === xpos || d.p > sigLevel) return false;
+		}
+		return true;
+	})
+		.append("text")
+		// .attr("x", -5)
+		.attr("y", 5)
+		.text(function (d) {
+			if (d.p > sigLevel) {
+				return "";
+			} else if (d.row === d.column) {
+				return d.row;
+			} else {
+				return d.r.toFixed(2);
+			}
+		})
+		.style("fill", function (d) {
+			if (d.r === 1) {
+				return "#000";
+			} else {
+				return color(d.r);
+			}
+		});
+
+	cor.filter(function (d) {
+		var ypos = domain.indexOf(d.column);
+		var xpos = domain.indexOf(d.row);
+		for (var i = (ypos + 1); i < num; i++) {
+			if (i === xpos) return true;
+		}
+		return false;
+	})
+		.append("circle")
+		.attr("r", function (d) {
+			if (d.p > sigLevel) {
+				return "";
+			} else {
+				return (plotAreaWidth / (num * 2)) * (Math.abs(d.r) + 0.1);
+			}
+		})
+		.style("fill", function (d) {
+			if (d.r === 1) {
+				return "#000";
+			} else {
+				return color(d.r);
+			}
+		});
+
+	//legend
+	var aS = d3.scale
+		.linear()
+		.range([-padding.top + 15, plotAreaHeight + padding.bottom - 10])
+		.domain([1, -1]);
+
+	var yA = d3.svg.axis()
+		.orient("right")
+		.scale(aS)
+		.tickPadding(7);
+
+	var aG = svg.append("g")
+		.attr("class", "y axis")
+		.call(yA)
+		.attr("transform", "translate(" + (plotAreaWidth + padding.right / 2) + " ,0)");
+
+	var iR = d3.range(-1, 1.01, 0.01);
+	var h = plotAreaHeight / iR.length + 3;
+	iR.forEach(function (d) {
+		aG.append('rect')
+			.style('fill', color(d))
+			.style('stroke-width', 0)
+			.style('stoke', 'none')
+			.attr('height', h)
+			.attr('width', 10)
+			.attr('x', 0)
+			.attr('y', aS(d))
 	});
+	// });
 }
 
-function drawParallelCoordinates() {
+function drawParallelCoordinates(data) {
 	const parallelCoordinates = d3.select("#parallelCoordinates-container");
 	const width = 1310,
 		height = 550;
@@ -728,262 +806,309 @@ function drawParallelCoordinates() {
 	const plotAreaWidth = width - padding.left - padding.right;
 	const plotAreaHeight = height - padding.top - padding.bottom;
 
-	var x = d3.scale.ordinal().rangePoints([0, width], 1),
-		y = {},
-		dragging = {};
 
-	var line = d3.svg.line(),
-		axis = d3.svg.axis().orient("left"),
-		background,
-		foreground;
+	// d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
+	// 	if (error) {
+	// 		throw error;
+	// 	}
+	// 	console.log(data);
+	// drawUncertainty(data);
+	drawOriginal(data);
 
-	var svgForOriginal = parallelCoordinates.append("svg")
-		.attr("id", "svgForOriginal")
-		// .attr("visibility", "hidden")
-		.attr("width", width)
-		.attr("height", height)
-		.append("g")
-		.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
-
-	var svgForUncertainty = parallelCoordinates.append("svg")
-		.attr("id", "svgForUncertainty")
-		.attr("width", width)
-		.attr("height", height)
-		.append("g")
-		.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
-
-	d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
-		if (error) {
-			throw error;
-		}
-		console.log(data);
-		drawOriginal();
-		drawUncertainty();
-
-		function drawOriginal() {
+	// });
+	function drawOriginal(data) {
+		var x = d3.scale.ordinal().rangePoints([0, width], 1),
 			y = {};
-			dragging = {};
-			background = null;
-			foreground = null;
 
-			x.domain(dimensions = d3.keys(data.original[0]));
-			dimensions.forEach(function (d) {
-				var domain = d3.extent(data.original, function (p) {
-					return p[d];
-				});
-				// console.log(domain);
-				y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
-				return y[d];
+		var line = d3.svg.line(),
+			axis = d3.svg.axis().orient("left"),
+			background,
+			foreground;
+
+		y = {};
+		var dragging = {};
+		background = null;
+		foreground = null;
+
+		var svgForOriginal = parallelCoordinates.append("svg")
+			.attr("id", "svgForOriginal")
+			// .attr("visibility", "hidden")
+			.attr("width", width)
+			.attr("height", height)
+			.append("g")
+			.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+
+		x.domain(dimensions = d3.keys(data.original[0]));
+		dimensions.forEach(function (d) {
+			var domain = d3.extent(data.original, function (p) {
+				return p[d];
 			});
-			// Add grey background lines for context.
-			background = svgForOriginal.append("g")
-				.attr("class", "background")
-				.selectAll("path")
-				.data(data.original)
-				.enter()
-				.append("path")
-				.attr("d", path);
+			// console.log(domain);
+			y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
+			return y[d];
+		});
+		// Add grey background lines for context.
+		background = svgForOriginal.append("g")
+			.attr("class", "background")
+			.selectAll("path")
+			.data(data.original)
+			.enter()
+			.append("path")
+			.attr("d", path);
 
-			// Add blue foreground lines for focus.
-			foreground = svgForOriginal.append("g")
-				.attr("class", "foreground")
-				.selectAll("path")
-				.data(data.original)
-				.enter().append("path")
-				.attr("d", path);
+		// Add blue foreground lines for focus.
+		foreground = svgForOriginal.append("g")
+			.attr("class", "foreground")
+			.selectAll("path")
+			.data(data.original)
+			.enter().append("path")
+			.attr("d", path);
 
-			// Add a group element for each dimension.
-			var g = svgForOriginal.selectAll(".dimension")
-				.data(dimensions)
-				.enter().append("g")
-				.attr("class", "dimension")
-				.attr("transform", function (d) {
-					return "translate(" + x(d) + ")";
+		// Add a group element for each dimension.
+		var g = svgForOriginal.selectAll(".dimension")
+			.data(dimensions)
+			.enter().append("g")
+			.attr("class", "dimension")
+			.attr("transform", function (d) {
+				return "translate(" + x(d) + ")";
+			})
+			.call(d3.behavior.drag()
+				.origin(function (d) {
+					return {x: x(d)};
 				})
-				.call(d3.behavior.drag()
-					.origin(function (d) {
-						return {x: x(d)};
-					})
-					.on("dragstart", function (d) {
-						dragging[d] = x(d);
-						background.attr("visibility", "hidden");
-					})
-					.on("drag", function (d) {
-						dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
-						foreground.attr("d", path);
-						dimensions.sort(function (a, b) {
-							return position(a) - position(b);
-						});
-						x.domain(dimensions);
-						g.attr("transform", function (d) {
-							return "translate(" + position(d) + ")";
-						})
-					})
-					.on("dragend", function (d) {
-						delete dragging[d];
-						transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
-						transition(foreground).attr("d", path);
-						background
-							.attr("d", path)
-							.transition()
-							.delay(500)
-							.duration(0)
-							.attr("visibility", null);
-					}));
-
-			// Add an axis and title.
-			g.append("g")
-				.attr("class", "parallelAxis")
-				.each(function (d) {
-					d3.select(this).call(axis.scale(y[d]));
+				.on("dragstart", function (d) {
+					dragging[d] = x(d);
+					background.attr("visibility", "hidden");
 				})
-				.append("text")
-				.style("text-anchor", "middle")
-				.attr("y", -9)
-				.text(function (d) {
-					return d;
-				});
-
-			// Add and store a brush for each axis.
-			g.append("g")
-				.attr("class", "brush")
-				.each(function (d) {
-					d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+				.on("drag", function (d) {
+					dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
+					foreground.attr("d", path);
+					dimensions.sort(function (a, b) {
+						return position(a) - position(b);
+					});
+					x.domain(dimensions);
+					g.attr("transform", function (d) {
+						return "translate(" + position(d) + ")";
+					})
 				})
-				.selectAll("rect")
-				.attr("x", -8)
-				.attr("width", 16);
+				.on("dragend", function (d) {
+					delete dragging[d];
+					transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+					transition(foreground).attr("d", path);
+					background
+						.attr("d", path)
+						.transition()
+						.delay(500)
+						.duration(0)
+						.attr("visibility", null);
+				}));
+
+		// Add an axis and title.
+		g.append("g")
+			.attr("class", "parallelAxis")
+			.each(function (d) {
+				d3.select(this).call(axis.scale(y[d]));
+			})
+			.append("text")
+			.style("text-anchor", "middle")
+			.classed("label", true)
+			.attr("y", -9)
+			.text(function (d) {
+				return d;
+			});
+
+
+
+		// Add and store a brush for each axis.
+		g.append("g")
+			.attr("class", "brush")
+			.each(function (d) {
+				d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+			})
+			.selectAll("rect")
+			.attr("x", -8)
+			.attr("width", 16);
+
+		function position(d) {
+			var v = dragging[d];
+			return v == null ? x(d) : v;
 		}
 
-		function drawUncertainty() {
-			y = {};
-			dragging = {};
-			background = null;
-			foreground = null;
-
-			x.domain(dimensions = d3.keys(data.uncertainty[0]));
-			dimensions.forEach(function (d) {
-				var domain = d3.extent(data.uncertainty, function (p) {
-					return p[d];
-				});
-				// console.log(domain);
-				y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
-				return y[d];
-			});
-			// Add grey background lines for context.
-			background = svgForUncertainty.append("g")
-				.attr("class", "background")
-				.selectAll("path")
-				.data(data.uncertainty)
-				.enter()
-				.append("path")
-				.attr("d", path);
-
-			// Add blue foreground lines for focus.
-			foreground = svgForUncertainty.append("g")
-				.attr("class", "foreground")
-				.selectAll("path")
-				.data(data.uncertainty)
-				.enter().append("path")
-				.attr("d", path);
-
-			// Add a group element for each dimension.
-			var g = svgForUncertainty.selectAll(".dimension")
-				.data(dimensions)
-				.enter().append("g")
-				.attr("class", "dimension")
-				.attr("transform", function (d) {
-					return "translate(" + x(d) + ")";
-				})
-				.call(d3.behavior.drag()
-					.origin(function (d) {
-						return {x: x(d)};
-					})
-					.on("dragstart", function (d) {
-						dragging[d] = x(d);
-						background.attr("visibility", "hidden");
-					})
-					.on("drag", function (d) {
-						dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
-						foreground.attr("d", path);
-						dimensions.sort(function (a, b) {
-							return position(a) - position(b);
-						});
-						x.domain(dimensions);
-						g.attr("transform", function (d) {
-							return "translate(" + position(d) + ")";
-						})
-					})
-					.on("dragend", function (d) {
-						delete dragging[d];
-						transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
-						transition(foreground).attr("d", path);
-						background
-							.attr("d", path)
-							.transition()
-							.delay(500)
-							.duration(0)
-							.attr("visibility", null);
-					}));
-
-			// Add an axis and title.
-			g.append("g")
-				.attr("class", "parallelAxis")
-				.each(function (d) {
-					d3.select(this).call(axis.scale(y[d]));
-				})
-				.append("text")
-				.style("text-anchor", "middle")
-				.attr("y", -9)
-				.text(function (d) {
-					return d;
-				});
-
-			// Add and store a brush for each axis.
-			g.append("g")
-				.attr("class", "brush")
-				.each(function (d) {
-					d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
-				})
-				.selectAll("rect")
-				.attr("x", -8)
-				.attr("width", 16);
+		function transition(g) {
+			return g.transition().duration(500);
 		}
-	});
-
-
-	function position(d) {
-		var v = dragging[d];
-		return v == null ? x(d) : v;
-	}
-
-	function transition(g) {
-		return g.transition().duration(500);
-	}
 
 // Returns the path for a given data point.
-	function path(d) {
-		return line(dimensions.map(function (p) {
-			return [position(p), y[p](d[p])];
-		}));
-	}
+		function path(d) {
+			return line(dimensions.map(function (p) {
+				return [position(p), y[p](d[p])];
+			}));
+		}
 
-	function brushstart() {
-		d3.event.sourceEvent.stopPropagation();
-	}
+		function brushstart() {
+			d3.event.sourceEvent.stopPropagation();
+		}
 
 // Handles a brush event, toggling the display of foreground lines.
-	function brush() {
-		var actives = dimensions.filter(function (p) {
-				return !y[p].brush.empty();
-			}),
-			extents = actives.map(function (p) {
-				return y[p].brush.extent();
+		function brush() {
+			var actives = dimensions.filter(function (p) {
+					return !y[p].brush.empty();
+				}),
+				extents = actives.map(function (p) {
+					return y[p].brush.extent();
+				});
+			foreground.style("display", function (d) {
+				return actives.every(function (p, i) {
+					return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+				}) ? null : "none";
 			});
-		foreground.style("display", function (d) {
-			return actives.every(function (p, i) {
-				return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-			}) ? null : "none";
-		});
+		}
+
+
 	}
+
+	function drawUncertainty(data) {
+		var x = d3.scale.ordinal().rangePoints([0, width], 1),
+			y = {};
+
+		var line = d3.svg.line(),
+			axis = d3.svg.axis().orient("left"),
+			background,
+			foreground;
+		var dragging = {};
+		background = null;
+		foreground = null;
+
+		var svgForUncertainty = parallelCoordinates.append("svg")
+			.attr("id", "svgForUncertainty")
+			.attr("width", width)
+			.attr("height", height)
+			.append("g")
+			.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+
+		x.domain(dimensions = d3.keys(data.uncertainty[0]));
+		dimensions.forEach(function (d) {
+			var domain = d3.extent(data.uncertainty, function (p) {
+				return p[d];
+			});
+			// console.log(domain);
+			y[d] = d3.scale.linear().domain(domain).range([plotAreaHeight, 0]);
+			return y[d];
+		});
+		// Add grey background lines for context.
+		background = svgForUncertainty.append("g")
+			.attr("class", "background")
+			.selectAll("path")
+			.data(data.uncertainty)
+			.enter()
+			.append("path")
+			.attr("d", path);
+
+		// Add blue foreground lines for focus.
+		foreground = svgForUncertainty.append("g")
+			.attr("class", "foreground")
+			.selectAll("path")
+			.data(data.uncertainty)
+			.enter().append("path")
+			.attr("d", path);
+
+		// Add a group element for each dimension.
+		var g = svgForUncertainty.selectAll(".dimension")
+			.data(dimensions)
+			.enter().append("g")
+			.attr("class", "dimension")
+			.attr("transform", function (d) {
+				return "translate(" + x(d) + ")";
+			})
+			.call(d3.behavior.drag()
+				.origin(function (d) {
+					return {x: x(d)};
+				})
+				.on("dragstart", function (d) {
+					dragging[d] = x(d);
+					background.attr("visibility", "hidden");
+				})
+				.on("drag", function (d) {
+					dragging[d] = Math.min(plotAreaWidth, Math.max(0, d3.event.x));
+					foreground.attr("d", path);
+					dimensions.sort(function (a, b) {
+						return position(a) - position(b);
+					});
+					x.domain(dimensions);
+					g.attr("transform", function (d) {
+						return "translate(" + position(d) + ")";
+					})
+				})
+				.on("dragend", function (d) {
+					delete dragging[d];
+					transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+					transition(foreground).attr("d", path);
+					background
+						.attr("d", path)
+						.transition()
+						.delay(500)
+						.duration(0)
+						.attr("visibility", null);
+				}));
+
+		// Add an axis and title.
+		g.append("g")
+			.attr("class", "parallelAxis")
+			.each(function (d) {
+				d3.select(this).call(axis.scale(y[d]));
+			})
+			.append("text")
+			.style("text-anchor", "middle")
+			.attr("y", -9)
+			.text(function (d) {
+				return d;
+			});
+
+		// Add and store a brush for each axis.
+		g.append("g")
+			.attr("class", "brush")
+			.each(function (d) {
+				d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+			})
+			.selectAll("rect")
+			.attr("x", -8)
+			.attr("width", 16);
+
+		function position(d) {
+			var v = dragging[d];
+			return v == null ? x(d) : v;
+		}
+
+		function transition(g) {
+			return g.transition().duration(500);
+		}
+
+// Returns the path for a given data point.
+		function path(d) {
+			return line(dimensions.map(function (p) {
+				return [position(p), y[p](d[p])];
+			}));
+		}
+
+		function brushstart() {
+			d3.event.sourceEvent.stopPropagation();
+		}
+
+// Handles a brush event, toggling the display of foreground lines.
+		function brush() {
+			var actives = dimensions.filter(function (p) {
+					return !y[p].brush.empty();
+				}),
+				extents = actives.map(function (p) {
+					return y[p].brush.extent();
+				});
+			foreground.style("display", function (d) {
+				return actives.every(function (p, i) {
+					return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+				}) ? null : "none";
+			});
+		}
+
+	}
+
 }

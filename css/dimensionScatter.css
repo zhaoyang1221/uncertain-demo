@@ -52,5 +52,9 @@
     left: 0;
 }
 text.label {
-    font: 15px sans-serif
+    font: 22px sans-serif
 }
+.inputLabel{
+    width: 100px;
+}
+

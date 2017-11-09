@@ -1,0 +1,110 @@
+[
+  {
+    "mean": 3.6135,
+    "sd": 8.6015,
+    "min": 0.0063,
+    "max": 88.9762,
+    "median": 0.2565,
+    "uncertainty": 8.9751,
+    "_row": "crim"
+  },
+  {
+    "mean": 11.3636,
+    "sd": 23.3225,
+    "min": 0,
+    "max": 100,
+    "median": 0,
+    "uncertainty": 1.9501,
+    "_row": "zn"
+  },
+  {
+    "mean": 11.1368,
+    "sd": 6.8604,
+    "min": 0.46,
+    "max": 27.74,
+    "median": 9.69,
+    "uncertainty": 5.0287,
+    "_row": "indus"
+  },
+  {
+    "mean": 0.5547,
+    "sd": 0.1159,
+    "min": 0.385,
+    "max": 0.871,
+    "median": 0.538,
+    "uncertainty": 6.002,
+    "_row": "nox"
+  },
+  {
+    "mean": 6.2846,
+    "sd": 0.7026,
+    "min": 3.561,
+    "max": 8.78,
+    "median": 6.2085,
+    "uncertainty": 8.7369,
+    "_row": "rm"
+  },
+  {
+    "mean": 68.5749,
+    "sd": 28.1489,
+    "min": 2.9,
+    "max": 100,
+    "median": 77.5,
+    "uncertainty": 8.0519,
+    "_row": "age"
+  },
+  {
+    "mean": 3.795,
+    "sd": 2.1057,
+    "min": 1.1296,
+    "max": 12.1265,
+    "median": 3.2074,
+    "uncertainty": 8.5676,
+    "_row": "dis"
+  },
+  {
+    "mean": 408.2372,
+    "sd": 168.5371,
+    "min": 187,
+    "max": 711,
+    "median": 330,
+    "uncertainty": 4.8271,
+    "_row": "tax"
+  },
+  {
+    "mean": 18.4555,
+    "sd": 2.1649,
+    "min": 12.6,
+    "max": 22,
+    "median": 19.05,
+    "uncertainty": 4.428,
+    "_row": "ptratio"
+  },
+  {
+    "mean": 356.674,
+    "sd": 91.2949,
+    "min": 0.32,
+    "max": 396.9,
+    "median": 391.44,
+    "uncertainty": 7.2109,
+    "_row": "black"
+  },
+  {
+    "mean": 12.6531,
+    "sd": 7.1411,
+    "min": 1.73,
+    "max": 37.97,
+    "median": 11.36,
+    "uncertainty": 8.774,
+    "_row": "lstat"
+  },
+  {
+    "mean": 22.5328,
+    "sd": 9.1971,
+    "min": 5,
+    "max": 50,
+    "median": 21.2,
+    "uncertainty": 7.5271,
+    "_row": "medv"
+  }
+]
