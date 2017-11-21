@@ -20,6 +20,10 @@ d3.json("json/cars.json", function (error, data) {
 	drawRowDataScatter(data);
 });
 
+d3.json("json/cars_uncertainty_data.json", function (error, data) {
+	drawRowDataTable(data);
+});
+
 d3.json("json/cars_original_correlation.json", function (error, data) {
 	drawOriginalCorrelogram(data);
 });
@@ -296,7 +300,7 @@ function drawDimensionScatter(data) {
  * 原数据散点图
  */
 function drawRowDataScatter(data) {
-	const rowDataScatterContainer = d3.select("#rowDataScatter");
+	const rowDataScatterContainer = d3.select("#rowDataScatter-container");
 
 	const width = 650;
 	const height = 510;
@@ -488,6 +492,48 @@ function drawRowDataScatter(data) {
 	// });
 }
 
+/**
+ * 原数据表格
+ * @param data
+ */
+function drawRowDataTable(data) {
+	var columns = Object.keys(data[0]);
+	console.log(columns);
+
+	const rowDataTableContainer = d3.select("#rowDataTable-container");
+	const width= 1300;
+	const height = 510;
+
+	var table = rowDataTableContainer.append("table");
+	var thead = table.append("thead");
+	var tbody = table.append("tbody");
+
+
+	thead.append("tr")
+		.selectAll("th")
+		.data(columns).enter()
+		.append("th")
+		.text(function (column) {
+			return column;
+		});
+
+	var rows = tbody.selectAll("tr")
+		.data(data)
+		.enter()
+		.append("tr");
+
+	var cells = rows.selectAll("td")
+		.data(function (row) {
+			return columns.map(function (column) {
+				return {column: column, value: row[column]};
+			});
+		})
+		.enter()
+		.append("td")
+		.text(function (d) {
+			return d.value;
+		})
+}
 /**
  * 原数据相关图
  */
@@ -797,6 +843,10 @@ function drawUncertaintyCorrelogram(data) {
 	// });
 }
 
+/**
+ * 平行坐标图
+ * @param data
+ */
 function drawParallelCoordinates(data) {
 	const parallelCoordinates = d3.select("#parallelCoordinates-container");
 	const width = 1310,
