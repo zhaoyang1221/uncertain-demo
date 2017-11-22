@@ -317,6 +317,11 @@ function drawRowDataScatter(data) {
 
 	var names = Object.keys(data[0]);
 	console.log(names);
+	var dimensionName = [];
+	for (var i = 0; i < names.length; i++ ) {
+		dimensionName[i] = names[i];
+	}
+	console.log(dimensionName);
 	var xCat = names[0],
 		yCat = names[1];
 
@@ -365,7 +370,15 @@ function drawRowDataScatter(data) {
 		.attr("class", "d3-tip")
 		.offset([-10, 0])
 		.html(function (d) {
-			return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
+		    var html = "";
+		    // console.log(dimensionName);
+		    for (var i in dimensionName) {
+		        var name = dimensionName[i];
+		        html +=  name + ": " + d[name] + "<br>";
+                // console.log(name);
+            }
+			// return xCat + ": " + d[xCat] + "<br>" + yCat + ": " + d[yCat];
+            return html;
 		});
 
 	var zoomBeh = d3.behavior.zoom()
@@ -533,6 +546,15 @@ function drawRowDataTable(data) {
 		.text(function (d) {
 			return d.value;
 		})
+}
+
+function setTab(name,cursel,n){
+    for(i=1;i<=n;i++){
+        var menu=document.getElementById(name+i);
+        var con=document.getElementById("con_"+name+"_"+i);
+        menu.className=i==cursel?"hover":"";
+        con.style.display=i==cursel?"block":"none";
+    }
 }
 /**
  * 原数据相关图

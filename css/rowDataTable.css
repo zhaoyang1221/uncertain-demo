@@ -18,3 +18,8 @@ th {
     -ms-user-select: none;
     user-select: none;
 }
+
+td {
+    background-color: lightgrey;
+    width: 50px;
+}
