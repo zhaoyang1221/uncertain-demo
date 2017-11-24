@@ -12,53 +12,60 @@ $(function () {
 
 var summaryData = [];
 
-d3.json("json/cars_summary.json", function (error, data) {
-    // console.log(data);
-    summaryData = data;
-	drawDimensionScatter(data);
+// carsAnalyze();
+BostonAnalyze();
 
-});
+function carsAnalyze() {
+	d3.json("json/cars_summary.json", function (error, data) {
+		// console.log(data);
+		summaryData = data;
+		drawDimensionScatter(data);
 
-d3.json("json/cars.json", function (error, data) {
-	drawRowDataScatter(data);
-});
+	});
 
-d3.json("json/cars_uncertainty_data.json", function (error, data) {
-	drawRowDataTable(data);
-});
+	d3.json("json/cars.json", function (error, data) {
+		drawRowDataScatter(data);
+	});
 
-d3.json("json/cars_original_correlation.json", function (error, data) {
-	drawOriginalCorrelogram(data);
-    drawOriginalSchemaBall(data);
-});
-d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
-	drawUncertaintyCorrelogram(data);
-    drawUncertaintySchemaball(data);
+	d3.json("json/cars_original_correlation.json", function (error, data) {
+		drawOriginalCorrelogram(data);
+		drawOriginalSchemaBall(data);
+	});
+	d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
+		drawUncertaintyCorrelogram(data);
+		drawUncertaintySchemaball(data);
 
-});
-d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
-	drawParallelCoordinates(data);
-});
+	});
+	d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
+		drawParallelCoordinates(data);
+		drawRowDataTable(data.uncertainty);
+	});
+}
 
+function BostonAnalyze() {
+	d3.json("json/Boston_summary.json", function (error, data) {
+		summaryData = data;
+		drawDimensionScatter(data);
+	});
 
+	d3.json("json/Boston.json", function (error, data) {
+		drawRowDataScatter(data);
+	});
 
-// d3.json("json/Boston_summary.json", function (error, data) {
-// 	drawDimensionScatter(data);
-// });
-//
-// d3.json("json/Boston.json", function (error, data) {
-// 	drawRowDataScatter(data);
-// });
-//
-// d3.json("json/Boston_original_correlation.json", function (error, data) {
-// 	drawOriginalCorrelogram(data);
-// });
-// d3.json("json/Boston_uncertainty_correlation.json", function (error, data) {
-// 	drawUncertaintyCorrelogram(data);
-// });
-// d3.json("json/Boston_original_with_uncertainty.json", function (error, data) {
-// 	drawParallelCoordinates(data);
-// });
+	d3.json("json/Boston_original_correlation.json", function (error, data) {
+		drawOriginalCorrelogram(data);
+		drawOriginalSchemaBall(data);
+	});
+	d3.json("json/Boston_uncertainty_correlation.json", function (error, data) {
+		drawUncertaintyCorrelogram(data);
+		drawUncertaintySchemaball(data);
+	});
+	d3.json("json/Boston_original_with_uncertainty.json", function (error, data) {
+		drawParallelCoordinates(data);
+		drawRowDataTable(data.uncertainty);
+	});
+}
+
 
 
 /**
@@ -1250,7 +1257,7 @@ function drawOriginalSchemaBall(data) {
     lineScale.domain(lineDomain);
     // console.log(lineDomain);
     data.forEach(function (d) {
-        console.log(d.p);
+        // console.log(d.p);
 
         if ( d.p !== null && d.p < sigLevel) {
             var color;
@@ -1417,7 +1424,7 @@ function drawUncertaintySchemaball(data) {
     lineScale.domain(lineDomain);
     // console.log(lineDomain);
     data.forEach(function (d) {
-        console.log(d.p);
+        // console.log(d.p);
 
         if ( d.p !== null && d.p < sigLevel) {
             var color;
