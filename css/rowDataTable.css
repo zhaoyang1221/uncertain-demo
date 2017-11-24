@@ -1,13 +1,17 @@
 div#rowDataTable{
-    width: 700px;
-    height: 470px;
+    width: 1300px;
+    height: 550px;
     overflow: scroll;
 }
 
 table {
-    border: 2px solid #42b983;
+    border: 2px solid #cad9ea;
     border-radius: 3px;
+    /*color:#666;*/
     background-color: #fff;
+    table-layout: fixed;
+    font-size: 20px;
+    margin: 2px auto;
 }
 th {
     background-color: #42b983;
@@ -21,5 +25,7 @@ th {
 
 td {
     background-color: lightgrey;
-    width: 50px;
+    width: 120px;
+    height: 30px;
+    text-align: center;
 }

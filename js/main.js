@@ -10,8 +10,11 @@ $(function () {
 
 });
 
+var summaryData = [];
 
 d3.json("json/cars_summary.json", function (error, data) {
+    // console.log(data);
+    summaryData = data;
 	drawDimensionScatter(data);
 
 });
@@ -26,13 +29,18 @@ d3.json("json/cars_uncertainty_data.json", function (error, data) {
 
 d3.json("json/cars_original_correlation.json", function (error, data) {
 	drawOriginalCorrelogram(data);
+    drawOriginalSchemaBall(data);
 });
 d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
 	drawUncertaintyCorrelogram(data);
+    drawUncertaintySchemaball(data);
+
 });
 d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
 	drawParallelCoordinates(data);
 });
+
+
 
 // d3.json("json/Boston_summary.json", function (error, data) {
 // 	drawDimensionScatter(data);
@@ -548,12 +556,27 @@ function drawRowDataTable(data) {
 		})
 }
 
+/**
+ * 标签切换
+ * @param name
+ * @param cursel
+ * @param n
+ */
 function setTab(name,cursel,n){
-    for(i=1;i<=n;i++){
+    for(var i=1;i<=n;i++){
         var menu=document.getElementById(name+i);
         var con=document.getElementById("con_"+name+"_"+i);
         menu.className=i==cursel?"hover":"";
         con.style.display=i==cursel?"block":"none";
+    }
+}
+function setCorrelationTab(name,cursel,n) {
+    console.log(name);
+    for(var i=1;i<=n;i++){
+        var menu=document.getElementById(name+i);
+        var correlation=document.getElementById("con_"+name+"_"+i);
+        menu.className=i==cursel?"hover":"";
+        correlation.style.display=i==cursel?"block":"none";
     }
 }
 /**
@@ -1182,5 +1205,339 @@ function drawParallelCoordinates(data) {
 		}
 
 	}
+
+}
+
+function drawOriginalSchemaBall(data) {
+    var schemaBall = echarts.init(document.getElementById("schemaBall-container"));
+
+    //结点数据处理
+    var uncertaintyScale = d3.scale.linear().range([12,40]);
+    var colorScale = d3.scale.category20();
+    // console.log(summaryData);
+    var domain = d3.extent(summaryData, function (d) {
+        return d["uncertainty"];
+    });
+    uncertaintyScale.domain(domain);
+    // console.log(domain);
+
+    var nodes = [];
+    summaryData.forEach(function (d, i) {
+        var t = {
+            name: d["_row"],
+            symbolSize: uncertaintyScale(d["uncertainty"]),
+            itemStyle: {
+                normal: {
+                    color: colorScale(i)
+                }
+            }
+
+        };
+        nodes.push(t);
+
+    });
+    // console.log(nodes);
+
+    //连线处理
+    console.log(data);
+    var links = [];
+    var sigLevel = 0.05;
+    var linkColors = [ "#b21b26", "#1E23B2" ];
+    var lineScale = d3.scale.linear().range([1.0, 6.0]);
+    var lineDomain =  d3.extent(data, function (d) {
+        return Math.abs(d.r);
+    });
+    lineScale.domain(lineDomain);
+    // console.log(lineDomain);
+    data.forEach(function (d) {
+        console.log(d.p);
+
+        if ( d.p !== null && d.p < sigLevel) {
+            var color;
+            if (d.r > 0) {
+                color = linkColors[1];
+            } else {
+                color = linkColors[0];
+            }
+            var t = {
+                source: d.row,
+                target: d.column,
+                name: '',
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function(params, ticket, callback) {
+                        return params.data.name;
+                    }
+                },
+                symbolSize: [4, 20],
+                label: {
+                    normal: {
+                        formatter: function(params, ticket, callback) {
+                            params.name = params.data.name;
+                            return params.name;
+                        },
+                        show: true
+                    }
+                },
+                lineStyle: {
+                    normal: {
+                        width: lineScale(Math.abs(d.r)),
+                        curveness: 0.2,
+                        opacity: 0.3,
+                        color: color
+                    }
+                }
+            };
+
+            links.push(t);
+        }
+    });
+
+    var option = {
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+
+        // dataRange: {
+        //     min: 0,
+        //     max: 100,
+        //     y: '60%',
+        //     calculable: true,
+        //     color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua']
+        // },
+
+        series: [{
+            type: 'graph',
+            tooltip: {},
+            ribbonType: true,
+            layout: 'circular',
+
+            circular: {
+                rotateLabel: true
+            },
+            symbolSize: 30,
+            roam: true,
+            focusNodeAdjacency: true,
+
+            label: {
+                normal: {
+                    position: 'center',
+                    fontWeight: 'bold',
+                    formatter: '{b}',
+                    normal: {
+                        textStyle: {
+
+                            fontFamily: '宋体'
+                        }
+                    }
+                }
+            },
+
+            edgeSymbol: ['circle'],
+            edgeSymbolSize: [4, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 13,
+                        fontWeight: 'bold',
+                        fontFamily: '宋体'
+                    }
+                }
+            },
+
+            itemStyle: {
+                normal: {
+                    label: {
+                        rotate: true,
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    color: ["#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7"] /* 内的颜色#393f51，外的颜色#85d6f7 */
+                },
+                emphasis: {
+                    label: {
+                        show: true
+                        // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                    }
+                }
+            },
+
+            data : nodes,
+            links : links
+
+
+        }]
+    };
+
+    schemaBall.setOption(option);
+
+}
+
+function drawUncertaintySchemaball(data) {
+    var schemaBall = echarts.init(document.getElementById("uncertaintySchemaBall-container"));
+
+    //结点数据处理
+    var uncertaintyScale = d3.scale.linear().range([12,40]);
+    var colorScale = d3.scale.category20();
+    // console.log(summaryData);
+    var domain = d3.extent(summaryData, function (d) {
+        return d["uncertainty"];
+    });
+    uncertaintyScale.domain(domain);
+    // console.log(domain);
+
+    var nodes = [];
+    summaryData.forEach(function (d, i) {
+        var t = {
+            name: d["_row"],
+            symbolSize: uncertaintyScale(d["uncertainty"]),
+            itemStyle: {
+                normal: {
+                    color: colorScale(i)
+                }
+            }
+
+        };
+        nodes.push(t);
+
+    });
+    // console.log(nodes);
+
+    //连线处理
+    console.log(data);
+    var links = [];
+    var sigLevel = 0.05;
+    var linkColors = [ "#b21b26", "#1E23B2" ];
+    var lineScale = d3.scale.linear().range([1.0, 6.0]);
+    var lineDomain =  d3.extent(data, function (d) {
+        return Math.abs(d.r);
+    });
+    lineScale.domain(lineDomain);
+    // console.log(lineDomain);
+    data.forEach(function (d) {
+        console.log(d.p);
+
+        if ( d.p !== null && d.p < sigLevel) {
+            var color;
+            if (d.r > 0) {
+                color = linkColors[1];
+            } else {
+                color = linkColors[0];
+            }
+            var t = {
+                source: d.row,
+                target: d.column,
+                name: '',
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function(params, ticket, callback) {
+                        return params.data.name;
+                    }
+                },
+                symbolSize: [4, 20],
+                label: {
+                    normal: {
+                        formatter: function(params, ticket, callback) {
+                            params.name = params.data.name;
+                            return params.name;
+                        },
+                        show: true
+                    }
+                },
+                lineStyle: {
+                    normal: {
+                        width: lineScale(Math.abs(d.r)),
+                        curveness: 0.2,
+                        opacity: 0.3,
+                        color: color
+                    }
+                }
+            };
+
+            links.push(t);
+        }
+    });
+
+    var option = {
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+
+        // dataRange: {
+        //     min: 0,
+        //     max: 100,
+        //     y: '60%',
+        //     calculable: true,
+        //     color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua']
+        // },
+
+        series: [{
+            type: 'graph',
+            tooltip: {},
+            ribbonType: true,
+            layout: 'circular',
+
+            circular: {
+                rotateLabel: true
+            },
+            symbolSize: 30,
+            roam: true,
+            focusNodeAdjacency: true,
+
+            label: {
+                normal: {
+                    position: 'center',
+                    fontWeight: 'bold',
+                    formatter: '{b}',
+                    normal: {
+                        textStyle: {
+
+                            fontFamily: '宋体'
+                        }
+                    }
+                }
+            },
+
+            edgeSymbol: ['circle'],
+            edgeSymbolSize: [4, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 13,
+                        fontWeight: 'bold',
+                        fontFamily: '宋体'
+                    }
+                }
+            },
+
+            itemStyle: {
+                normal: {
+                    label: {
+                        rotate: true,
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    color: ["#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#393f51", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7", "#85d6f7"] /* 内的颜色#393f51，外的颜色#85d6f7 */
+                },
+                emphasis: {
+                    label: {
+                        show: true
+                        // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                    }
+                }
+            },
+
+            data : nodes,
+            links : links
+
+
+        }]
+    };
+
+    schemaBall.setOption(option);
 
 }

@@ -20,7 +20,7 @@
 <div class="main myDivClass">
     <div class="menu">
         <span id="one1" onclick="setTab('one', 1, 2)" class="hover">图</span>
-        <span id="one2" onclick="setTab('one', 2, 2)">表格</span>
+        <span id="one2" onclick="setTab('one', 2, 2)">表</span>
     </div>
     <div class="content">
         <div id="con_one_1">
@@ -70,24 +70,61 @@
     </div>
 </div>
 
-
-<div id="originalCorrelogram" class="myDivClass">
-    <div class="controlPanel">
-        <button>reorder</button>
+<div id="originalCorrelationMain" class="myDivClass">
+    <div class="menu">
+        <span id="correlationOne1" onclick="setCorrelationTab('correlationOne', 1, 2)" class="hover">图</span>
+        <span id="correlationOne2" onclick="setCorrelationTab('correlationOne', 2, 2)">表</span>
     </div>
-    <div id="originalCorrelogram-container"></div>
+
+    <div class="content">
+        <div id="con_correlationOne_1">
+            <div id="schemaBall">
+                <div id="schemaBall-container" class="myDivClass"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div id="con_correlationOne_2" style="display:none">
+            <div id="originalCorrelogram" class="myDivClass">
+                <div class="controlPanel">
+                    <button>reorder</button>
+                </div>
+                <div id="originalCorrelogram-container"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div id="parallelCoordinates" class="myDivClass">
     <div id="parallelCoordinates-container"></div>
 </div>
 
-<div id="uncertaintyCorrelogram" class="myDivClass">
-    <div class="controlPanel">
-        <button>reorder</button>
+<div id="uncertaintyCorrelationMain" class="myDivClass">
+    <div class="menu">
+        <span id="uncertaintyOne1" onclick="setCorrelationTab('uncertaintyOne', 1, 2)" class="hover">图</span>
+        <span id="uncertaintyOne2" onclick="setCorrelationTab('uncertaintyOne', 2, 2)">表</span>
     </div>
-    <div id="uncertaintyCorrelogram-container"></div>
+
+    <div class="content">
+        <div id="con_uncertaintyOne_1">
+            <div id="uncertaintySchemaBall">
+                <div id="uncertaintySchemaBall-container" class="myDivClass"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div id="con_uncertaintyOne_2" style="display:none">
+            <div id="uncertaintyCorrelogram" class="myDivClass">
+                <div class="controlPanel">
+                    <button>reorder</button>
+                </div>
+                <div id="uncertaintyCorrelogram-container"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -95,7 +132,9 @@
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/d3-tip/index.js"></script>
 
+<script src="js/echarts.js"></script>
 <script src="js/main.js"></script>
+
 <!--<script src="js/dimensionScatter.js"></script>-->
 <!--<script src="js/rowDataScatter.js"></script>-->
 </body>
