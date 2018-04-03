@@ -12,8 +12,8 @@ $(function () {
 
 var summaryData = [];
 
-// carsAnalyze();
-BostonAnalyze();
+carsAnalyze();
+// BostonAnalyze();
 
 function carsAnalyze() {
 	d3.json("json/cars_summary.json", function (error, data) {
