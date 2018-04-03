@@ -18,10 +18,10 @@
 </div>
 
 <div class="main myDivClass">
-    <div class="menu">
-        <span id="one1" onclick="setTab('one', 1, 2)" class="hover">图</span>
-        <span id="one2" onclick="setTab('one', 2, 2)">表</span>
-    </div>
+    <!--<div class="menu">-->
+        <!--<span id="one1" onclick="setTab('one', 1, 2)" class="hover">图</span>-->
+        <!--<span id="one2" onclick="setTab('one', 2, 2)">表</span>-->
+    <!--</div>-->
     <div class="content">
         <div id="con_one_1">
             <div id="dimensionScatter" class="myDivClass">
@@ -56,7 +56,7 @@
                         <input type="text" id="xLabelForRowDataScatter" class="inputLabel">
                         <label for="yLabelForRowDataScatter">Y:</label>
                         <input type="text" id="yLabelForRowDataScatter" class="inputLabel">
-                        <button id="rowScatterChangeButton">show</button>
+                        <input type="button" id="rowScatterChangeButton" value="show">
                     </div>
                 </div>
                 <div id="rowDataScatter-container"></div>
@@ -71,23 +71,24 @@
 </div>
 
 <div id="originalCorrelationMain" class="myDivClass">
-    <div class="menu">
-        <span id="correlationOne1" onclick="setCorrelationTab('correlationOne', 1, 2)" class="hover">图</span>
-        <span id="correlationOne2" onclick="setCorrelationTab('correlationOne', 2, 2)">表</span>
-    </div>
+    <!--<div class="menu">-->
+        <!--<span id="correlationOne1" onclick="setCorrelationTab('correlationOne', 1, 2)" class="hover">图</span>-->
+        <!--<span id="correlationOne2" onclick="setCorrelationTab('correlationOne', 2, 2)">表</span>-->
+    <!--</div>-->
 
+    <!--<div class="content">-->
+        <!--<div id="con_correlationOne_1">-->
+            <!--<div id="schemaBall">-->
+                <!--<div id="schemaBall-container" class="myDivClass"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     <div class="content">
-        <div id="con_correlationOne_1">
-            <div id="schemaBall">
-                <div id="schemaBall-container" class="myDivClass"></div>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div id="con_correlationOne_2" style="display:none">
+        <!--<div id="con_correlationOne_2" style="display:none">-->
+        <div id="con_correlationOne_2">
             <div id="originalCorrelogram" class="myDivClass">
                 <div class="controlPanel">
-                    <button>reorder</button>
+                    <input type="button" value="reorder">
                 </div>
                 <div id="originalCorrelogram-container"></div>
             </div>
@@ -101,23 +102,24 @@
 </div>
 
 <div id="uncertaintyCorrelationMain" class="myDivClass">
-    <div class="menu">
-        <span id="uncertaintyOne1" onclick="setCorrelationTab('uncertaintyOne', 1, 2)" class="hover">图</span>
-        <span id="uncertaintyOne2" onclick="setCorrelationTab('uncertaintyOne', 2, 2)">表</span>
-    </div>
+    <!--<div class="menu">-->
+        <!--<span id="uncertaintyOne1" onclick="setCorrelationTab('uncertaintyOne', 1, 2)" class="hover">图</span>-->
+        <!--<span id="uncertaintyOne2" onclick="setCorrelationTab('uncertaintyOne', 2, 2)">表</span>-->
+    <!--</div>-->
 
+    <!--<div class="content">-->
+        <!--<div id="con_uncertaintyOne_1">-->
+            <!--<div id="uncertaintySchemaBall">-->
+                <!--<div id="uncertaintySchemaBall-container" class="myDivClass"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     <div class="content">
-        <div id="con_uncertaintyOne_1">
-            <div id="uncertaintySchemaBall">
-                <div id="uncertaintySchemaBall-container" class="myDivClass"></div>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div id="con_uncertaintyOne_2" style="display:none">
+        <!--<div id="con_uncertaintyOne_2" style="display:none">-->
+        <div id="con_uncertaintyOne_2">
             <div id="uncertaintyCorrelogram" class="myDivClass">
                 <div class="controlPanel">
-                    <button>reorder</button>
+                    <input type="button" value="reorder">
                 </div>
                 <div id="uncertaintyCorrelogram-container"></div>
             </div>

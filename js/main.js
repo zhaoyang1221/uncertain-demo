@@ -12,53 +12,53 @@ $(function () {
 
 var summaryData = [];
 
-d3.json("json/cars_summary.json", function (error, data) {
-    // console.log(data);
-    summaryData = data;
-	drawDimensionScatter(data);
-
-});
-
-d3.json("json/cars.json", function (error, data) {
-	drawRowDataScatter(data);
-});
-
-d3.json("json/cars_uncertainty_data.json", function (error, data) {
-	drawRowDataTable(data);
-});
-
-d3.json("json/cars_original_correlation.json", function (error, data) {
-	drawOriginalCorrelogram(data);
-    drawOriginalSchemaBall(data);
-});
-d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
-	drawUncertaintyCorrelogram(data);
-    drawUncertaintySchemaball(data);
-
-});
-d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
-	drawParallelCoordinates(data);
-});
-
-
-
-// d3.json("json/Boston_summary.json", function (error, data) {
+// d3.json("json/cars_summary.json", function (error, data) {
+//     // console.log(data);
+//     summaryData = data;
 // 	drawDimensionScatter(data);
+//
 // });
 //
-// d3.json("json/Boston.json", function (error, data) {
+// d3.json("json/cars.json", function (error, data) {
 // 	drawRowDataScatter(data);
 // });
 //
-// d3.json("json/Boston_original_correlation.json", function (error, data) {
+// d3.json("json/cars_uncertainty_data.json", function (error, data) {
+// 	drawRowDataTable(data);
+// });
+//
+// d3.json("json/cars_original_correlation.json", function (error, data) {
 // 	drawOriginalCorrelogram(data);
+//     drawOriginalSchemaBall(data);
 // });
-// d3.json("json/Boston_uncertainty_correlation.json", function (error, data) {
+// d3.json("json/cars_uncertainty_correlation.json", function (error, data) {
 // 	drawUncertaintyCorrelogram(data);
+//     drawUncertaintySchemaball(data);
+//
 // });
-// d3.json("json/Boston_original_with_uncertainty.json", function (error, data) {
+// d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
 // 	drawParallelCoordinates(data);
 // });
+
+
+
+d3.json("json/Boston_summary.json", function (error, data) {
+	drawDimensionScatter(data);
+});
+
+d3.json("json/Boston.json", function (error, data) {
+	drawRowDataScatter(data);
+});
+
+d3.json("json/Boston_original_correlation.json", function (error, data) {
+	drawOriginalCorrelogram(data);
+});
+d3.json("json/Boston_uncertainty_correlation.json", function (error, data) {
+	drawUncertaintyCorrelogram(data);
+});
+d3.json("json/Boston_original_with_uncertainty.json", function (error, data) {
+	drawParallelCoordinates(data);
+});
 
 
 /**
@@ -67,13 +67,13 @@ d3.json("json/cars_original_with_uncertainty.json", function (error, data) {
 function drawDimensionScatter(data) {
 	//画散点图
 	const container = d3.select("#dimensionScatter-container");
-	const width = 650;
+	const width = 700;
 	const height = 510;
 	const padding = {
 		top: 30,
 		right: 30,
-		bottom: 30,
-		left: 40
+		bottom: 60,
+		left: 90
 	};
 	var clickDotNames = 0;
 // inner chart dimensions, where the dots are plotted
@@ -310,13 +310,13 @@ function drawDimensionScatter(data) {
 function drawRowDataScatter(data) {
 	const rowDataScatterContainer = d3.select("#rowDataScatter-container");
 
-	const width = 650;
+	const width = 700;
 	const height = 510;
 	const padding = {
 		top: 30,
 		right: 30,
-		bottom: 30,
-		left: 40
+		bottom: 60,
+		left: 80
 	};
 
 // inner chart dimensions, where the dots are plotted
@@ -584,11 +584,11 @@ function setCorrelationTab(name,cursel,n) {
  */
 function drawOriginalCorrelogram(data) {
 	const originalCorrelogramContainer = d3.select("#originalCorrelogram-container");
-	const width = 600;
+	const width = 700;
 	const height = 500;
 	const padding = {
 		top: 50,
-		right: 100,
+		right: 120,
 		bottom: 40,
 		left: 50
 	};
@@ -670,6 +670,7 @@ function drawOriginalCorrelogram(data) {
 				return d.r.toFixed(2);
 			}
 		})
+        .classed("rowLabel", true)
 		.style("fill", function (d) {
 			if (d.r === 1) {
 				return "#000";
@@ -738,11 +739,11 @@ function drawOriginalCorrelogram(data) {
  */
 function drawUncertaintyCorrelogram(data) {
 	const uncertaintyCorrelogramContainer = d3.select("#uncertaintyCorrelogram-container");
-	const width = 600;
-	const height = 500;
+	const width = 700;
+	const height = 550;
 	const padding = {
 		top: 50,
-		right: 100,
+		right: 120,
 		bottom: 40,
 		left: 50
 	};
@@ -825,6 +826,7 @@ function drawUncertaintyCorrelogram(data) {
 				return d.r.toFixed(2);
 			}
 		})
+        .classed("rowLabel", true)
 		.style("fill", function (d) {
 			if (d.r === 1) {
 				return "#000";
@@ -894,10 +896,10 @@ function drawUncertaintyCorrelogram(data) {
  */
 function drawParallelCoordinates(data) {
 	const parallelCoordinates = d3.select("#parallelCoordinates-container");
-	const width = 1310,
-		height = 550;
+	const width = 1420,
+		height = 520;
 
-	const padding = {top: 30, right: 10, bottom: 10, left: 10};
+	const padding = {top: 80, right: 10, bottom: 10, left: 10};
 	const plotAreaWidth = width - padding.left - padding.right;
 	const plotAreaHeight = height - padding.top - padding.bottom;
 
@@ -1007,7 +1009,7 @@ function drawParallelCoordinates(data) {
 			.append("text")
 			.style("text-anchor", "middle")
 			.classed("label", true)
-			.attr("y", -9)
+			.attr("y", -25)
 			.text(function (d) {
 				return d;
 			});

@@ -3,3 +3,6 @@
     stoke-width: 2px;
     fill: none;
 }
+text.rowLabel {
+    font: 25px "Times New Roman"
+}

@@ -14,29 +14,29 @@ html, body {
     height: 3%;
 }
 #dimensionScatter {
-    width: 650px;
+    width: 700px;
     height: 550px;
     float: left;
 }
 #rowDataScatter {
-    width: 650px;
+    width: 700px;
     height: 550px;
     float: left;
 }
 #originalCorrelogram {
-    width: 650px;
+    width: 700px;
     height: 550px;
     float: left;
 }
 
 #parallelCoordinates {
-    width: 1360px;
-    height: 550px;
+    width: 1420px;
+    height: 600px;
     float: left;
 }
 #uncertaintyCorrelogram{
-    width: 650px;
-    height: 550px;
+    width: 700px;
+    height: 600px;
     float: left;
 }
 
@@ -197,6 +197,20 @@ html, body {
     margin-top:0px;
     display:inline;
     /*background:#333333;*/
+}
+label {
+    font: 25px "Times New Roman";
+}
+input[type="button"]{
+    padding: 5px;
+    font: 25px "Times New Roman";
+}
+
+select span{
+    font-size: 15px;
+}
+input[type="text"]{
+    font-size: 25px;
 }
 
 

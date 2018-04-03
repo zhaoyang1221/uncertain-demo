@@ -52,7 +52,13 @@
     left: 0;
 }
 text.label {
-    font: 22px sans-serif
+    font: 45px "Times New Roman"
+}
+text[dy=".32em"] {
+    font:30px "Times New Roman";
+}
+text[dy=".71em"][y="3"][x="0"] {
+    font:30px "Times New Roman";
 }
 .inputLabel{
     width: 100px;
